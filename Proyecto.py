@@ -34,3 +34,22 @@ class Figura():
 		self.rect.y = y_fig
 
 
+activo = True
+while activo:
+	for event in pygame.event.get():
+		pos = pygame.mouse.get_pos()
+
+		if event.type == pygame.QUIT:
+			activo = False
+			pygame.quit()
+			quit()
+
+	barra = Figura(20,largo//2,20,180,blanco)
+	gameDisplay.blit(barra.image, barra.rect)
+
+	pygame.display.update() #actualiza los frames
+
+
+pygame.quit()
+quit()
+
