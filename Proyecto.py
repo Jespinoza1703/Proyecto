@@ -13,5 +13,3 @@ verde = (0,255,0)
 rojo1 = (150, 0, 0)
 verde1 = (0,150,0)
 azul1 = (0,0,150)
-
-font = pygame.font.SysFont ("Arial", 28)
