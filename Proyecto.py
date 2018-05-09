@@ -33,23 +33,28 @@ class Figura():
 		self.rect.x = x_fig
 		self.rect.y = y_fig
 
+def intro_juego():
+	intro = True
+	while intro:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT: #para salir del juego
+				pygame.quit()
+				quit()
+		gameDisplay.fill(negro)
+		fuenteLetra = pygame.font.SysFont("Arial", 68)
+		label1 = fuenteLetra.render("PING PONG",100, blanco)  #com esto se pone un texto.
+		gameDisplay.blit(label1, (50,20))
 
-activo = True
-while activo:
-	for event in pygame.event.get():
-		pos = pygame.mouse.get_pos()
+		gameDisplay.fill(negro)
+		barra = Figura(20,largo//2,20,180,blanco)
+		gameDisplay.blit(barra.image, barra.rect)
 
-		if event.type == pygame.QUIT:
-			activo = False
-			pygame.quit()
-			quit()
-
-	barra = Figura(20,largo//2,20,180,blanco)
-	gameDisplay.blit(barra.image, barra.rect)
-
-	pygame.display.update() #actualiza los frames
+		pygame.display.update()
+		clock.tick(15)
 
 
+
+intro_juego()		
 pygame.quit()
 quit()
 
