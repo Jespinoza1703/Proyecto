@@ -44,10 +44,11 @@ def intro_juego():
 		fuenteLetra = pygame.font.SysFont("Arial", 68)
 		label1 = fuenteLetra.render("PING PONG",100, blanco)  #com esto se pone un texto.
 		gameDisplay.blit(label1, (50,20))
-
-		gameDisplay.fill(negro)
+		
 		barra = Figura(20,largo//2,20,180,blanco)
 		gameDisplay.blit(barra.image, barra.rect)
+		barra2 = Figura(ancho-40,largo//2,20,180,blanco)
+		gameDisplay.blit(barra2.image, barra2.rect)
 
 		pygame.display.update()
 		clock.tick(15)
