@@ -26,12 +26,12 @@ class Bola:
 		matriz[self.y][self.x] = 0 #poner en negro el cuadro anterior
 
 
-		if self.y == 23 and self.direction == -1: #cuando llegua abajo, cambie de direccion hacia arriba
+		if self.y == 24 and self.direction == -1: #cuando llegua abajo, cambie de direccion hacia arriba
 			self.direction = 1
 		elif self.y == 1 and self.direction == 1: #cuando llegue arriba, cambie de direccion hacia abajo
 			self.direction = -1
 
-		elif self.x == 38: #si llega al borde derecho, cambie de direccion hacia izquierda
+		elif self.x == 39: #si llega al borde derecho, cambie de direccion hacia izquierda
 			self.right = False
 		elif self.x == 1:
 			self.right = True #si llega al borde izquierdi, cambie de direccion hacia derecha
@@ -74,7 +74,7 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
-			elif self.direction == 1:
+			elif self.direction == 1 and self.x > 0:
 				self.x -= self.vx
 				self.y -= self.vy 
 				print(5)
