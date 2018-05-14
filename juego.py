@@ -32,7 +32,7 @@ class Juego:
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
-		self.bola = Bola(12,19)
+		self.bola = Bola(5,5)
 		self.barra1 = Barra(1,5,1,9)
 		self.barra2 = Barra(38,5,1,9)
 		self.score = 0
@@ -57,7 +57,7 @@ class Juego:
 
 	def jugar(self):
 		# Pone la bola en la matriz
-		self.bola.mover(0,0,self.matriz)
+		self.bola.mover(self.matriz)
 		fuera_juego = False
 		while not fuera_juego:
 			for event in pygame.event.get():
@@ -90,7 +90,7 @@ class Juego:
 								 (255,0,0))
 		self.pantalla.blit(score_text, (0, 0))
 
-		self.bola.mover(1,1,self.matriz)
+		self.bola.mover(self.matriz)
 
 		pygame.display.update()
 
