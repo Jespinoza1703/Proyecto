@@ -2,6 +2,7 @@ import pygame
 import tkinter
 from barra import Barra
 from bola import Bola
+import time
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -53,6 +54,7 @@ class Juego:
 					pygame.draw.rect(self.pantalla, BLACK, [L* columna,L * fila,L,L])
 				else:
 					pygame.draw.rect(self.pantalla, WHITE, [L* columna,L * fila,L,L])
+		time.sleep(0.08)
 		pygame.draw.line(self.pantalla, WHITE, [400, 0], [400,600], 4)
 
 	def jugar(self):
