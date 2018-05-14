@@ -79,3 +79,18 @@ class Juego:
 						barra.mover2(movimiento,1)
 						barra.actualiza_matriz(self.pantalla)
 			self.dibujarMatriz()
+
+			
+	def dibujar(self):
+		font = pygame.font.Font(None, 48)
+		score_text = font.render("Score: " + str(self.score), True,
+								 (255,0,0))
+		self.pantalla.blit(score_text, (0, 0))
+
+		self.bola.mover(1,1,self.matriz)
+
+		pygame.display.update()
+
+if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
+	juego = Juego()
+	juego.jugar()
