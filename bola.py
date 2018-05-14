@@ -31,7 +31,7 @@ class Bola:
 		elif self.y == 0 and self.direction == 1: #cuando llegue arriba, cambie de direccion hacia abajo
 			self.direction = -1
 
-		elif self.x == 39: #si llega al borde derecho, cambie de direccion hacia izquierda
+		elif self.x == 38: #si llega al borde derecho, cambie de direccion hacia izquierda
 			self.right = False
 		elif self.x == 0:
 			self.right = True #si llega al borde izquierdi, cambie de direccion hacia derecha
