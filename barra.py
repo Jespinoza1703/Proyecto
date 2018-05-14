@@ -18,7 +18,7 @@ class Barra:
 
     def posicionar(self,matriz):
         for n in range(self.largo):
-        	matriz[self.y+n][self.x]
+        	matriz[self.y+n][self.x] = 1
 
     def mover(self,vy,matriz):
         matriz[self.y][self.x] = 0
