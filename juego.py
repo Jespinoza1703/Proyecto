@@ -52,3 +52,29 @@ class Juego:
 				else:
 					pygame.draw.rect(self.pantalla, WHITE, [L* columna,L * fila,L,L])
 		pygame.draw.line(self.pantalla, WHITE, [400, 0], [400,600], 4)
+		
+    def jugar(self):
+        # Pone la bola en la matriz
+        self.bola.mover(0,0,self.matriz)
+        fuera_juego = False
+        while not fuera_juego:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: #is le da X, cierra todd
+                    fuera_juego = True
+                if event.type == pygame.KEYDOWN: #al presionar una tecla
+                    if event.key == pygame.K_UP:
+                        movimiento = -1
+                        barra.mover(movimiento,38)
+                        barra.actualiza_matriz(self.pantalla)
+                    elif event.key == pygame.K_DOWN:
+                        movimiento = 1
+                        barra.mover(movimiento,38)
+                        barra.actualiza_matriz(self.pantalla)
+                    elif event.key == pygame.K_w:
+                        movimiento = -1
+                        barra.mover2(movimiento,1)
+                        barra.actualiza_matriz(self.pantalla)
+                    elif event.key == pygame.K_s:
+                        movimiento = 1
+                        barra.mover2(movimiento,1)
+                        barra.actualiza_matriz(self.pantalla)
