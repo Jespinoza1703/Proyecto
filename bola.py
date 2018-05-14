@@ -17,7 +17,7 @@ class Bola:
 		self.vx = 1
 		self.vy = 1
 
-	def mover(self,vx,vy,matriz):
+	def mover(self, matriz):
 		# se mueve primero en las filas y luego en las columnas
 		matriz[self.y][self.x] = 0
 		self.x += self.vx
