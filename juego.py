@@ -35,7 +35,7 @@ class Juego:
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
-		self.bola = Bola(5,5, random.randrange(-1, 2), True)
+		self.bola = Bola(20,12, random.randrange(-1, 2), True)
 		self.barra1 = barra1
 		self.barra2 = barra2
 		self.score = 0

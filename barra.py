@@ -22,5 +22,5 @@ class Barra:
 
     def mover(self,vy,matriz):
         matriz[self.y][self.x] = 0
-        self.y += vy
+        self.y -= vy
         matriz[self.y][self.x] = 1
