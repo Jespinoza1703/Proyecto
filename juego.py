@@ -24,3 +24,12 @@ class Juego:
         pygame.init()
         self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
         pygame.display.set_caption("PONG")
+
+        
+    def crearMatriz(self):
+        for i in range(self.FILAS):
+            fila = []
+            for j in range(self.COLUMNAS):
+                # Llena la lista de ceros
+                fila.append(0)
+            self.matriz.append(fila)
