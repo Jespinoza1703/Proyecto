@@ -64,7 +64,7 @@ class Bola:
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
 
-		elif self.right == False: #si right es false, o sea hacia la izquierda
+		elif self.right == False and self.x > 0: #si right es false, o sea hacia la izquierda
 			if self.direction == -1:
 				self.x -= self.vx
 				self.y += self.vy
