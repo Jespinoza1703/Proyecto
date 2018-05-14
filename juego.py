@@ -87,7 +87,7 @@ class Juego:
 
 			
 	def dibujar(self):
-		font = pygame.font.Font(None, 48)
+		font = pygame.font.Font(None, 36)
 		score_text = font.render("Score: " + str(self.score), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text, (0, 0))
