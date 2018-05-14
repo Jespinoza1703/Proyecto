@@ -3,6 +3,7 @@ import tkinter
 from barra import Barra
 from bola import Bola
 import time
+import random
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -33,7 +34,7 @@ class Juego:
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
-		self.bola = Bola(5,5)
+		self.bola = Bola(5,5, random.randrange(-1, 2), True)
 		self.barra1 = Barra(1,5,1,9)
 		self.barra2 = Barra(38,5,1,9)
 		self.score = 0
