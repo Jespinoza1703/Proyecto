@@ -28,8 +28,8 @@ class Juego:
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
-        self.FILAS = 25
-        self.COLUMNAS = 40
+		self.FILAS = 25
+		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
 		self.bola = Bola(12,19)
@@ -81,6 +81,7 @@ class Juego:
 						barra.mover2(movimiento,1)
 						barra.actualiza_matriz(self.pantalla)
 			self.dibujarMatriz()
+			self.dibujar()
 
 			
 	def dibujar(self):
