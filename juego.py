@@ -55,8 +55,8 @@ class Juego:
 					pygame.draw.rect(self.pantalla, BLACK, [L* columna,L * fila,L,L])
 				else:
 					pygame.draw.rect(self.pantalla, WHITE, [L* columna,L * fila,L,L])
-		time.sleep(0.08)
-		pygame.draw.line(self.pantalla, WHITE, [400, 0], [400,600], 4)
+		time.sleep(0.06)
+		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def jugar(self):
 		# Pone la bola en la matriz
@@ -88,12 +88,15 @@ class Juego:
 
 			
 	def dibujar(self):
-		font = pygame.font.Font(None, 36)
-		score_text = font.render("Score: " + str(self.score), True,
+		font = pygame.font.Font(None, 30)
+		score_text = font.render("ScoreP1: " + str(self.score), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text, (0, 0))
-
+		score_text2 = font.render("ScoreP2: " + str(self.score), True,
+								 (255,0,0))
+		self.pantalla.blit(score_text2, (670, 0))
 		self.bola.mover(self.matriz)
+		pygame.draw.line(self.pantalla, WHITE, [0, 20], [ANCHO,20], 4)
 
 		pygame.display.update()
 
