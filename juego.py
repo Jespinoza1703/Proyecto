@@ -79,7 +79,7 @@ class Juego:
 						self.barra2.mover(1,self.matriz)
 					elif event.key == pygame.K_s:
 						movimiento = 1
-						self.barra1.mover(1,self.matriz)
+						self.barra2.mover(1,self.matriz)
 			self.dibujarMatriz()
 			self.dibujar()
 
