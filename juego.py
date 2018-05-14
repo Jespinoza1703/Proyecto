@@ -35,8 +35,8 @@ class Juego:
 		self.matriz = []
 		self.crearMatriz()
 		self.bola = Bola(5,5, random.randrange(-1, 2), True)
-		self.barra1 = Barra(1,5,1,9)
-		self.barra2 = Barra(38,5,1,9)
+		self.barra1 = Barra(1,5,9)
+		self.barra2 = Barra(38,5,9)
 		self.score = 0
 
 
@@ -61,6 +61,7 @@ class Juego:
 	def jugar(self):
 		# Pone la bola en la matriz
 		self.bola.mover(self.matriz)
+		self.barra1.posicionar(self.matriz)
 		fuera_juego = False
 		while not fuera_juego:
 			for event in pygame.event.get():
@@ -69,20 +70,16 @@ class Juego:
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
 						movimiento = -1
-						barra.mover(movimiento,38)
-						barra.actualiza_matriz(self.pantalla)
+						self.barra1.mover(1,self.matriz)
 					elif event.key == pygame.K_DOWN:
 						movimiento = 1
-						barra.mover(movimiento,38)
-						barra.actualiza_matriz(self.pantalla)
+						self.barra1.mover(1,self.matriz)
 					elif event.key == pygame.K_w:
 						movimiento = -1
-						barra.mover2(movimiento,1)
-						barra.actualiza_matriz(self.pantalla)
+						self.barra2.mover(1,self.matriz)
 					elif event.key == pygame.K_s:
 						movimiento = 1
-						barra.mover2(movimiento,1)
-						barra.actualiza_matriz(self.pantalla)
+						self.barra1.mover(1,self.matriz)
 			self.dibujarMatriz()
 			self.dibujar()
 
@@ -96,6 +93,7 @@ class Juego:
 								 (255,0,0))
 		self.pantalla.blit(score_text2, (670, 0))
 		self.bola.mover(self.matriz)
+		self.barra1.posicionar(self.matriz)
 		pygame.draw.line(self.pantalla, WHITE, [0, 20], [ANCHO,20], 4)
 
 		pygame.display.update()
