@@ -9,7 +9,11 @@ L = 20
 
 # Clase Juego:
 # Atributos:
-# matriz
+# matriz: [[],[],...,[]]
+# bola: Class
+# barra1: Class
+# barra2: Class
+# score: int
 #######################
 # Metodos:
 # crearMatriz()
@@ -24,6 +28,12 @@ class Juego:
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
+		self.matriz = []
+		self.crearMatriz()
+		self.bola = Bola(12,19)
+		self.barra1 = Barra(1,5,1,9)
+		self.barra2 = Barra(38,5,1,9)
+		self.score = 0
 
 
 	def crearMatriz(self):
