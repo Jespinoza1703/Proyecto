@@ -67,13 +67,13 @@ class Juego:
 					fuera_juego = True
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
-						self.barra1.mover(-1,self.matriz)
+						self.barra2.mover(self.matriz,-1)
 					elif event.key == pygame.K_DOWN:
-						self.barra1.mover(1,self.matriz)
+						self.barra2.mover(self.matriz,1)
 					elif event.key == pygame.K_w:
-						self.barra2.mover(-1,self.matriz)
+						self.barra1.mover(self.matriz,-1)
 					elif event.key == pygame.K_s:
-						self.barra2.mover(1,self.matriz)
+						self.barra1.mover(self.matriz,1)
 			self.dibujarMatriz()
 
 			self.dibujar()
