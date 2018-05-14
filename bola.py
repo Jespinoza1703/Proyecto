@@ -26,8 +26,13 @@ class Bola:
 			self.x += self.vx
 			self.y += self.vy
 			matriz[self.y][self.x] = 1
-		else:
+		elif self.x == 24 or self.y == 39:
 			print(2)
 			self.x -= self.vx
 			self.y -= self.vy
+			matriz[self.y][self.x] = 1
+		elif self.x == 24 and self.y < 39:
+			print(3)
+			self.x += self.vx
+			self.y += self.vy
 			matriz[self.y][self.x] = 1
