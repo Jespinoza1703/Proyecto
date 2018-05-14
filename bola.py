@@ -28,12 +28,12 @@ class Bola:
 
 		if self.y == 24 and self.direction == -1: #cuando llegua abajo, cambie de direccion hacia arriba
 			self.direction = 1
-		elif self.y == 1 and self.direction == 1: #cuando llegue arriba, cambie de direccion hacia abajo
+		elif self.y == 0 and self.direction == 1: #cuando llegue arriba, cambie de direccion hacia abajo
 			self.direction = -1
 
 		elif self.x == 39: #si llega al borde derecho, cambie de direccion hacia izquierda
 			self.right = False
-		elif self.x == 1:
+		elif self.x == 0:
 			self.right = True #si llega al borde izquierdi, cambie de direccion hacia derecha
 
 		if self.right == True: #si right es true, o sea, hacia la derecha
@@ -64,7 +64,7 @@ class Bola:
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
 
-		if self.right == False: #si right es false, o sea hacia la izquierda
+		elif self.right == False: #si right es false, o sea hacia la izquierda
 			if self.direction == -1:
 				self.x -= self.vx
 				self.y += self.vy
@@ -74,7 +74,7 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
-			elif self.direction == 1 and self.x > 0:
+			elif self.direction == 1:
 				self.x -= self.vx
 				self.y -= self.vy 
 				print(5)
