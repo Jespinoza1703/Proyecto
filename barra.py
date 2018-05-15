@@ -25,7 +25,7 @@ class Barra:
             matriz[self.y][self.x] = 0
             self.y -= vy
             matriz[self.y][self.x] = 1
-        elif vy == 1:
+        elif vy == 1 and self.y > 0:
             matriz[self.y + self.largo - 1][self.x] = 0
             self.y -= vy
             matriz[self.y][self.x] = 1
