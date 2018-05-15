@@ -67,7 +67,10 @@ class Juego:
 					fuera_juego = True
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 						self.barra2.mover(1,self.matriz)
 					elif event.key == pygame.K_DOWN:
 						self.barra2.mover(-1,self.matriz)
