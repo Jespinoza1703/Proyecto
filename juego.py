@@ -60,10 +60,6 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def jugar(self):
-		# Pone la bola en la matriz
-		self.bola.mover(self.matriz)
-		self.barra1.posicionar(self.matriz)
-		self.barra2.posicionar(self.matriz)
 		fuera_juego = False
 		while not fuera_juego:
 			for event in pygame.event.get():
@@ -75,9 +71,9 @@ class Juego:
 					elif event.key == pygame.K_DOWN:
 						self.barra2.mover(-1,self.matriz)
 					elif event.key == pygame.K_w:
-						self.barra1.mover(-1,self.matriz)
-					elif event.key == pygame.K_s:
 						self.barra1.mover(1,self.matriz)
+					elif event.key == pygame.K_s:
+						self.barra1.mover(-1,self.matriz)
 					elif event.key == pygame.K_ESCAPE:
 						fuera_juego = True
 			self.dibujarMatriz()
@@ -92,12 +88,14 @@ class Juego:
 		score_text2 = font.render("ScoreP2: " + str(self.score), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text2, (670, 0))
+		# Pone la bola en la matriz
 		self.bola.mover(self.matriz)
 		self.barra1.posicionar(self.matriz)
+		self.barra2.posicionar(self.matriz)
 		pygame.draw.line(self.pantalla, WHITE, [0, 20], [ANCHO,20], 4)
 
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra(1,2,9),Barra_doble(12,38,9))
+	juego = Juego(Barra(1,2,9),Barra(38,12,9))
 	juego.jugar()
