@@ -70,7 +70,10 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def jugar(self):
+<<<<<<< HEAD
 		# Pone la bola en la matriz
+=======
+>>>>>>> master
 		fuera_juego = False
 		while not fuera_juego:
 			for event in pygame.event.get():
@@ -110,5 +113,9 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
+<<<<<<< HEAD
 	juego = Juego(Barra(1,11,9), Barra(38,11,9))
+=======
+	juego = Juego(Barra(1,2,9),Barra(38,12,9))
+>>>>>>> master
 	juego.jugar()
