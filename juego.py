@@ -2,6 +2,7 @@ import pygame
 import tkinter
 from barra import Barra
 from bola import Bola
+from barra_doble import Barra_doble
 import time
 import random
 
@@ -26,7 +27,7 @@ ANCHO = 800
 LARGO = 500
 
 class Juego:
-	def __init__(self):
+	def __init__(self, barra1, barra2):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
@@ -34,9 +35,9 @@ class Juego:
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
-		self.bola = Bola(5,5, random.randrange(-1, 2), True)
-		self.barra1 = Barra(1,5,9)
-		self.barra2 = Barra(38,5,9)
+		self.bola = Bola(20,12, random.randrange(-1, 2), True)
+		self.barra1 = barra1
+		self.barra2 = barra2
 		self.score = 0
 
 
@@ -59,7 +60,6 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def jugar(self):
-		# Pone la bola en la matriz
 		fuera_juego = False
 		while not fuera_juego:
 			for event in pygame.event.get():
@@ -67,13 +67,16 @@ class Juego:
 					fuera_juego = True
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
-						self.barra2.mover(self.matriz,-1)
+
+						self.barra2.mover(1,self.matriz)
 					elif event.key == pygame.K_DOWN:
-						self.barra2.mover(self.matriz,1)
+						self.barra2.mover(-1,self.matriz)
 					elif event.key == pygame.K_w:
-						self.barra1.mover(self.matriz,-1)
+						self.barra1.mover(1,self.matriz)
 					elif event.key == pygame.K_s:
-						self.barra1.mover(self.matriz,1)
+						self.barra1.mover(-1,self.matriz)
+					elif event.key == pygame.K_ESCAPE:
+						fuera_juego = True
 			self.dibujarMatriz()
 
 			self.dibujar()
@@ -87,6 +90,7 @@ class Juego:
 		score_text2 = font.render("ScoreP2: " + str(self.score), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text2, (670, 0))
+		# Pone la bola en la matriz
 		self.bola.mover(self.matriz)
 		self.barra1.posicionar(self.matriz)
 		self.barra2.posicionar(self.matriz)
@@ -95,5 +99,5 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego()
+	juego = Juego(Barra(1,2,9),Barra(38,12,9))
 	juego.jugar()
