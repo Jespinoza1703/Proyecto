@@ -75,13 +75,15 @@ class Juego:
 						self.barra1.mover(1,self.matriz)
 					elif event.key == pygame.K_DOWN:
 						movimiento = 1
-						self.barra1.mover(1,self.matriz)
+						self.barra1.mover(-1,self.matriz)
 					elif event.key == pygame.K_w:
 						movimiento = -1
 						self.barra2.mover(-1,self.matriz)
 					elif event.key == pygame.K_s:
 						movimiento = 1
 						self.barra2.mover(1,self.matriz)
+					elif event.key == pygame.K_ESCAPE:
+						fuera_juego = True
 			self.dibujarMatriz()
 			self.dibujar()
 
