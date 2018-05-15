@@ -27,7 +27,7 @@ ANCHO = 800
 LARGO = 500
 
 class Juego:
-	def __init__(self, barra1, barra2):
+	def __init__(self, barra1, barra2, tiempo):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
@@ -38,6 +38,7 @@ class Juego:
 		self.bola = Bola(20,12, random.randrange(-1, 2), True)
 		self.barra1 = barra1
 		self.barra2 = barra2
+		self.tiempo = tiempo
 		self.score = 0
 
 
@@ -56,7 +57,7 @@ class Juego:
 					pygame.draw.rect(self.pantalla, BLACK, [L* columna,L * fila,L,L])
 				else:
 					pygame.draw.rect(self.pantalla, WHITE, [L* columna,L * fila,L,L])
-		time.sleep(0.05)
+		time.sleep(self.tiempo)
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def jugar(self):
@@ -98,5 +99,5 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,12,9))
+	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,12,9),0.06)
 	juego.jugar()
