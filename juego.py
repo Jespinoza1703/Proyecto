@@ -5,6 +5,7 @@ from bola import Bola
 from barra_doble import Barra_doble
 import time
 import random
+import os
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -27,7 +28,7 @@ ANCHO = 800
 LARGO = 500
 
 class Juego:
-	def __init__(self):
+	def __init__(self, barra1, barra2):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
@@ -36,10 +37,19 @@ class Juego:
 		self.matriz = []
 		self.crearMatriz()
 		self.bola = Bola(20,12, random.randrange(-1, 2), True)
-		self.barra1 = Barra(1,11,9)
-		self.barra2 = Barra(38,11,9)
+		self.barra1 = barra1
+		self.barra2 = barra2
 		self.score = 0
 
+	def load_sound(name):
+	    route = os.path.join('sounds', name)
+	    # Loading the sound
+	    try:
+	        sound = pygame.mixer.Sound(route)
+	    except (pygame.error) as message:
+	        print("Cant load sound" + route)
+	        sound = None
+	    return sound
 
 	def crearMatriz(self):
 		for i in range(self.FILAS):
@@ -83,12 +93,15 @@ class Juego:
 			
 	def dibujar(self):
 		font = pygame.font.Font(None, 30)
-		score_text = font.render("ScoreP1: " + str(self.score), True,
+		score1 = self.bola.get_score1()
+		score_text = font.render("ScoreP1: " + str(score1), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text, (0, 0))
-		score_text2 = font.render("ScoreP2: " + str(self.score), True,
+		score2 = self.bola.get_score2()
+		score_text2 = font.render("ScoreP2: " + str(score2), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text2, (670, 0))
+		# Pone la bola en la matriz
 		self.bola.mover(self.matriz)
 		self.barra1.posicionar(self.matriz)
 		self.barra2.posicionar(self.matriz)
@@ -97,5 +110,5 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego()
+	juego = Juego(Barra(1,11,9), Barra(38,11,9))
 	juego.jugar()

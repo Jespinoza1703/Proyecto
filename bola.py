@@ -11,6 +11,9 @@
 # mover_bola()
 
 import random
+import pygame
+import os
+
 
 class Bola:
 	def __init__(self,x,y, direction, right):
@@ -23,6 +26,12 @@ class Bola:
 		self.score1 = 0
 		self.score2 = 0
 
+	def get_score1(self):
+		return self.score1
+
+	def get_score2(self):
+		return self.score2
+
 	def mover(self, matriz):
 		# se mueve primero en las filas y luego en las columnas
 		matriz[self.y][self.x] = 0 #poner en negro el cuadro anterior
@@ -33,6 +42,7 @@ class Bola:
 			self.direction = -1
 
 		elif self.x == 37 and matriz[self.y][self.x + 1] == 0: #si llega al borde derecho y el cuadrado de matriz es negro, punto para jugador 1
+			pygame.mixer.Sound(os.path.join('sounds', 'fail.wav')).play()
 			self.right = False
 			self.direction = random.randrange(-1, 2) #saque inicial direccion aleatorio
 			self.score1 += 1
@@ -40,6 +50,7 @@ class Bola:
 			self.y = 12
 
 		elif self.x == 37 and matriz[self.y][self.x + 1] == 1: #si llega al final y el siguiente es blanco, rebote
+			pygame.mixer.Sound(os.path.join('sounds', 'bounce.wav')).play()
 			if matriz[self.y - 3][self.x + 1] == 0 and matriz[self.y + 3][self.x + 1] == 0: #revisa si paleta es de 3
 				if matriz[self.y - 1][self.x + 1] == 0:
 					self.direction = 1
@@ -72,6 +83,7 @@ class Bola:
 					self.right = False
 
 		elif self.x == 2 and matriz[self.y][self.x -1] == 0: #si llega al principio y el siguiente cuadro es negro, rebote
+			pygame.mixer.Sound(os.path.join('sounds', 'fail.wav')).play()
 			self.right = True #si llega al borde izquierdo, cambie de direccion hacia derecha
 			self.direction = random.randrange(-1, 2) #saque inicial direccion aleatoria
 			self.score2 += 1
@@ -79,6 +91,7 @@ class Bola:
 			self.y = 12
 
 		elif self.x == 2 and matriz[self.y][self.x -1] == 1: #si llega al principio y el siguiente es blancoo
+			pygame.mixer.Sound(os.path.join('sounds', 'bounce.wav')).play()
 			if matriz[self.y - 3][self.x - 1] == 0 and matriz[self.y + 3][self.x - 1] == 0: #revisa si paleta es de 3
 				if matriz[self.y - 1][self.x - 1] == 0:
 					self.direction = 1
