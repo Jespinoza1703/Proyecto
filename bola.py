@@ -19,7 +19,9 @@ class Bola:
 		self.vx = 1
 		self.vy = 1
 		self.direction = direction
-		self.right = True
+		self.right = right
+		self.score1 = 0
+		self.score2 = 0
 
 	def mover(self, matriz):
 		# se mueve primero en las filas y luego en las columnas
@@ -31,10 +33,25 @@ class Bola:
 		elif self.y == 0 and self.direction == 1: #cuando llegue arriba, cambie de direccion hacia abajo
 			self.direction = -1
 
-		elif self.x == 39: #si llega al borde derecho, cambie de direccion hacia izquierda
+		elif self.x == 37 and matriz[self.y][self.x + 1] == 0: #si llega al borde derecho y el cuadrado de matriz es negro, punto para jugador 1
 			self.right = False
-		elif self.x == 0:
+			self.direction = random.randrange(-1, 2)
+			self.score1 += 1
+			self.x = 20
+			self.y = 12
+		elif self.x == 37 and matriz[self.y][self.x + 1] == 1:
+			self.right = False
+			self.direction = random.randrange(-1, 2)
+
+		elif self.x == 2 and matriz[self.y][self.x -1] == 0:
 			self.right = True #si llega al borde izquierdi, cambie de direccion hacia derecha
+			self.direction = random.randrange(-1, 2)
+			self.score2 += 1
+			self.x = 20
+			self.y = 12
+		elif self.x == 2 and matriz[self.y][self.x -1] == 1:
+			self.right = True
+			self.direction = random.randrange(-1, 2)
 
 		if self.right == True: #si right es true, o sea, hacia la derecha
 			if self.direction == -1:
@@ -46,6 +63,8 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 			elif self.direction == 1:
 				self.x += self.vx
 				self.y -= self.vy 
@@ -54,6 +73,8 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 				matriz[self.y][self.x] = 1
 			elif self.direction == 0:
 				self.x += self.vx
@@ -63,6 +84,8 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 
 		elif self.right == False and self.x > 0: #si right es false, o sea hacia la izquierda
 			if self.direction == -1:
@@ -74,6 +97,8 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 			elif self.direction == 1:
 				self.x -= self.vx
 				self.y -= self.vy 
@@ -82,6 +107,8 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 				matriz[self.y][self.x] = 1
 			elif self.direction == 0:
 				self.x -= self.vx
@@ -91,3 +118,5 @@ class Bola:
 				print('right: '+str(self.right))
 				print('x: '+str(self.x))
 				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
