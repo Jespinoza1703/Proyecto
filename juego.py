@@ -67,10 +67,6 @@ class Juego:
 					fuera_juego = True
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 						self.barra2.mover(1,self.matriz)
 					elif event.key == pygame.K_DOWN:
 						self.barra2.mover(-1,self.matriz)
@@ -102,5 +98,5 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra(1,2,9),Barra(38,12,9))
+	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,3,9))
 	juego.jugar()
