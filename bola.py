@@ -32,6 +32,12 @@ class Bola:
 	def get_score2(self):
 		return self.score2
 
+	def get_x(self):
+		return self.x
+
+	def get_y(self):
+		return self.y
+
 	def mover(self, matriz):
 		# se mueve primero en las filas y luego en las columnas
 		matriz[self.y][self.x] = 0 #poner en negro el cuadro anterior

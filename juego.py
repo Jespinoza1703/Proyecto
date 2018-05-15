@@ -69,6 +69,13 @@ class Juego:
 		time.sleep(0.06)
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
+	def cpu(self):
+		if self.bola.get_x() > 30:
+			if self.bola.get_y() > self.barra2.get_y():
+				self.barra2.mover(-1, self.matriz)
+			else:
+				self.barra2.mover(1, self.matriz)
+
 	def jugar(self):
 		# Pone la bola en la matriz
 		fuera_juego = False
@@ -89,6 +96,7 @@ class Juego:
 						fuera_juego = True
 			self.dibujarMatriz()
 			self.dibujar()
+			self.cpu()
 
 			
 	def dibujar(self):
