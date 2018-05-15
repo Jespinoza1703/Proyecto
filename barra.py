@@ -21,7 +21,7 @@ class Barra:
         	matriz[self.y+n][self.x] = 1
 
     def mover(self,vy,matriz):
-        if vy == -1:
+        if vy == -1 and self.y + self.largo < 25:
             matriz[self.y][self.x] = 0
             self.y -= vy
             matriz[self.y][self.x] = 1
