@@ -27,20 +27,51 @@ L = 20
 ANCHO = 800
 LARGO = 500
 
+TIEMPO_NIVEL1 = 0.1
+TIEMPO_NIVEL2 = 0.07
+TIEMPO_NIVEL3 = 0.04
+
+TAMAÑO_BARRA_1 = 9
+TAMAÑO_BARRA_2 = 6
+TAMAÑO_BARRA_3 = 3
+
 class Juego:
-	def __init__(self, barra1, barra2, tiempo):
+	def __init__(self, modo, nivel):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
-		pygame.display.set_caption("PONG")
+		pygame.display.set_caption("Pong")
 		self.FILAS = 30
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
-		self.bola = Bola(20,12, random.randrange(-1, 2), True)
-		self.barra1 = barra1
-		self.barra2 = barra2
-		self.tiempo = tiempo
 		self.score = 0
+		self.bola = Bola(20,12, random.randrange(-1, 2), True)
+		self.nivel = nivel
+		self.modo = modo
+		if self.nivel == 1:
+			self.tiempo = TIEMPO_NIVEL1
+			if self.modo == "Single":
+				self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
+				self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
+			else:
+				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
+				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
+		elif self.nivel == 2:
+			self.tiempo = TIEMPO_NIVEL2
+			if self.modo == "Single":
+				self.barra1 = Barra(1,2,TAMAÑO_BARRA_2) 
+				self.barra2 = Barra(38,2,TAMAÑO_BARRA_2)
+			else:
+				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_2)
+				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_2)
+		elif self.nivel == 3:
+			self.tiempo = TIEMPO_NIVEL3
+			if self.modo == "Single":
+				self.barra1 = Barra(1,2,TAMAÑO_BARRA_3) 
+				self.barra2 = Barra(38,2,TAMAÑO_BARRA_3)
+			else:
+				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
+				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
 
 	def load_sound(name):
 		route = os.path.join('sounds', name)
@@ -72,7 +103,7 @@ class Juego:
 
 	def cpu(self):
 		if self.bola.get_x() > 15:
-			if self.bola.get_y() > self.barra2.get_y2():
+			if self.bola.get_y() > self.barra2.get_y():
 				self.barra2.mover(-1, self.matriz)
 			else:
 				self.barra2.mover(1, self.matriz)
@@ -81,9 +112,48 @@ class Juego:
 		# Pone la bola en la matriz
 		fuera_juego = False
 		while not fuera_juego:
+			if self.bola.get_score1() == 5 or self.bola.get_score2() == 5:
+				self.bola.set_score1(0)
+				self.bola.set_score2(0)
+				self.nivel += 1
+
+				self.matriz = []
+				self.crearMatriz()
+
+				if self.nivel == 1:
+					self.tiempo = TIEMPO_NIVEL1
+					if self.modo == "Single":
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
+					else:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
+				if self.nivel == 2:
+					self.tiempo = TIEMPO_NIVEL2
+					if self.modo == "Single":
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_2) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_2)
+					else:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_2)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_2)
+
+				if self.nivel == 3:
+					self.tiempo = TIEMPO_NIVEL3
+					if self.modo == "Single":
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_3) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_3)
+					else:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
+
+				if self.nivel == 3:
+					self.nivel = 0
+
+		
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT: #is le da X, cierra todo
-					fuera_juego = True
+					pygame.quit()
+					quit()
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
 						self.barra2.mover(1,self.matriz)
@@ -94,7 +164,9 @@ class Juego:
 					elif event.key == pygame.K_s:
 						self.barra1.mover(-1,self.matriz)
 					elif event.key == pygame.K_ESCAPE:
-						fuera_juego = True
+						pygame.quit()
+						quit()
+
 			self.dibujarMatriz()
 
 			self.dibujar()
@@ -118,8 +190,3 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [0, 20], [ANCHO,20], 4)
 
 		pygame.display.update()
-
-if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra_doble(1,3,9,13,9),Barra_doble(38,13,30,3,9),0.1)
-	juego.jugar()
-
