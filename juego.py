@@ -27,8 +27,16 @@ L = 20
 ANCHO = 800
 LARGO = 500
 
+TIEMPO_NIVEL1 = 0.1
+TIEMPO_NIVEL2 = 0.07
+TIEMPO_NIVEL3 = 0.04
+
+TAMAÑO_BARRA_1 = 9
+TAMAÑO_BARRA_2 = 6
+TAMAÑO_BARRA_3 = 3
+
 class Juego:
-	def __init__(self, barra1, barra2, tiempo):
+	def __init__(self, modo, nivel):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
@@ -36,14 +44,34 @@ class Juego:
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
-		self.bola = Bola(20,12, random.randrange(-1, 2), True)
-		self.barra1 = barra1
-		self.barra2 = barra2
-		self.tiempo = tiempo
 		self.score = 0
-
-	def get_tiempo(self):
-		return self.tiempo
+		self.bola = Bola(20,12, random.randrange(-1, 2), True)
+		self.nivel = nivel
+		self.modo = modo
+		if self.nivel == 1:
+			self.tiempo = TIEMPO_NIVEL1
+			if self.modo == "Single":
+				self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
+				self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
+			else:
+				self.barra1 = Barra_doble(1,12,33,3,TAMAÑO_BARRA_1)
+				self.barra2 = Barra_doble(38,12,33,3,TAMAÑO_BARRA_1)
+		elif self.nivel == 2:
+			self.tiempo = TIEMPO_NIVEL2
+			if self.modo == "Single":
+				self.barra1 = Barra(1,2,TAMAÑO_BARRA_2) 
+				self.barra2 = Barra(38,2,TAMAÑO_BARRA_2)
+			else:
+				self.barra1 = Barra_doble(1,12,33,3,TAMAÑO_BARRA_2)
+				self.barra2 = Barra_doble(38,12,33,3,TAMAÑO_BARRA_2)
+		elif self.nivel == 3:
+			self.tiempo = TIEMPO_NIVEL3
+			if self.modo == "Single":
+				self.barra1 = Barra(1,2,TAMAÑO_BARRA_3) 
+				self.barra2 = Barra(38,2,TAMAÑO_BARRA_3)
+			else:
+				self.barra1 = Barra_doble(1,12,33,3,TAMAÑO_BARRA_3)
+				self.barra2 = Barra_doble(38,12,33,3,TAMAÑO_BARRA_3)
 
 	def load_sound(name):
 		route = os.path.join('sounds', name)
@@ -103,7 +131,7 @@ class Juego:
 			self.dibujarMatriz()
 
 			self.dibujar()
-			self.cpu()
+			#self.cpu()
 
 			
 	def dibujar(self):
