@@ -8,7 +8,8 @@
 #######################
 # Metodos:
 # mover_barra()
-
+import pygame
+import os
 
 class Barra:
 

@@ -73,16 +73,6 @@ class Juego:
 				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
 				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
 
-	def load_sound(name):
-		route = os.path.join('sounds', name)
-		# Loading the sound
-		try:
-			sound = pygame.mixer.Sound(route)
-		except (pygame.error) as message:
-			print("Cant load sound" + route)
-			sound = None
-		return sound
-
 	def crearMatriz(self):
 		for i in range(self.FILAS):
 			fila = []
