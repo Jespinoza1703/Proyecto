@@ -88,6 +88,39 @@ class Bola:
 					self.direction = 0
 					self.right = False
 
+		elif self.x == 29 and matriz[self.y][self.x + 1] == 1: #si llega a la barra doble derecha y el siguiente es blanco, rebote
+			pygame.mixer.Sound(os.path.join('sounds', 'bounce.wav')).play()
+			if matriz[self.y - 3][self.x + 1] == 0 and matriz[self.y + 3][self.x + 1] == 0: #revisa si paleta es de 3
+				if matriz[self.y - 1][self.x + 1] == 0:
+					self.direction = 1
+					self.right = False
+				elif matriz[self.y + 1][self.x + 1] == 0:
+					self.direction = -1
+					self.right = False
+				else:
+					self.direction = 0
+					self.right = False
+			if matriz[self.y - 3][self.x + 1] == 1 or matriz[self.y + 3][self.x + 1] == 1: #si paleta es 6
+				if matriz[self.y - 2][self.x + 1] == 0:
+					self.direction = 1
+					self.right = False
+				elif matriz[self.y + 2][self.x + 1] == 0:
+					self.direction = -1
+					self.right = False
+				else:
+					self.direction = 0
+					self.right = False
+			if matriz[self.y - 5][self.x + 1] == 1 or matriz[self.y + 5][self.x + 1] == 1: #si paleta es 9
+				if matriz[self.y - 3][self.x + 1] == 0:
+					self.direction = 1
+					self.right = False
+				elif matriz[self.y + 3][self.x + 1] == 0:
+					self.direction = -1
+					self.right = False
+				else:
+					self.direction = 0
+					self.right = False
+
 		elif self.x == 2 and matriz[self.y][self.x -1] == 0: #si llega al principio y el siguiente cuadro es negro, rebote
 			pygame.mixer.Sound(os.path.join('sounds', 'fail.wav')).play()
 			self.right = True #si llega al borde izquierdo, cambie de direccion hacia derecha
@@ -96,7 +129,40 @@ class Bola:
 			self.x = 20
 			self.y = 12
 
-		elif self.x == 2 and matriz[self.y][self.x -1] == 1: #si llega al principio y el siguiente es blancoo
+		elif self.x == 2 and matriz[self.y][self.x -1] == 1: #si llega al principio y el siguiente es blanco
+			pygame.mixer.Sound(os.path.join('sounds', 'bounce.wav')).play()
+			if matriz[self.y - 3][self.x - 1] == 0 and matriz[self.y + 3][self.x - 1] == 0: #revisa si paleta es de 3
+				if matriz[self.y - 1][self.x - 1] == 0:
+					self.direction = 1
+					self.right = True
+				elif matriz[self.y + 1][self.x - 1] == 0:
+					self.direction = -1
+					self.right = True
+				else:
+					self.direction = 0
+					self.right = True
+			if matriz[self.y - 3][self.x - 1] == 1 or matriz[self.y + 3][self.x - 1] == 1: #si paleta es 6
+				if matriz[self.y - 2][self.x - 1] == 0:
+					self.direction = 1
+					self.right = True
+				elif matriz[self.y + 2][self.x - 1] == 0:
+					self.direction = -1
+					self.right = True
+				else:
+					self.direction = 0
+					self.right = True
+			if matriz[self.y - 5][self.x - 1] == 1 or matriz[self.y + 5][self.x - 1] == 1: #si paleta es 9
+				if matriz[self.y - 3][self.x - 1] == 0:
+					self.direction = 1
+					self.right = True
+				elif matriz[self.y + 3][self.x - 1] == 0:
+					self.direction = -1
+					self.right = True
+				else:
+					self.direction = 0
+					self.right = True
+
+		elif self.x == 10 and matriz[self.y][self.x -1] == 1: #si llega a la paleta doble izquierda y el siguiente es blanco
 			pygame.mixer.Sound(os.path.join('sounds', 'bounce.wav')).play()
 			if matriz[self.y - 3][self.x - 1] == 0 and matriz[self.y + 3][self.x - 1] == 0: #revisa si paleta es de 3
 				if matriz[self.y - 1][self.x - 1] == 0:

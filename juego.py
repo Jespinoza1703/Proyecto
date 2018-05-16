@@ -71,8 +71,8 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def cpu(self):
-		if self.bola.get_x() > 30:
-			if self.bola.get_y() > self.barra2.get_y():
+		if self.bola.get_x() > 15:
+			if self.bola.get_y() > self.barra2.get_y2():
 				self.barra2.mover(-1, self.matriz)
 			else:
 				self.barra2.mover(1, self.matriz)
@@ -98,7 +98,7 @@ class Juego:
 			self.dibujarMatriz()
 
 			self.dibujar()
-			#self.cpu()
+			self.cpu()
 
 			
 	def dibujar(self):
@@ -120,6 +120,6 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,3,9),0.06)
+	juego = Juego(Barra_doble(1,3,9,13,9),Barra_doble(38,13,30,3,9),0.06)
 	juego.jugar()
 

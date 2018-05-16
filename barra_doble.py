@@ -19,6 +19,13 @@ class Barra_doble:
 		self.y1 = y1
 		self.x2 = x2
 		self.y2 = y2
+
+	def get_y1(self):
+		return self.y1
+
+	def get_y2(self):
+		return self.y2
+
 	# Coloca la barra en la matriz
 	def posicionar(self,matriz):
 		for n in range(self.largo):
