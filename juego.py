@@ -121,7 +121,11 @@ class Juego:
 				self.crearMatriz()
 
 				if self.nivel == 1:
+<<<<<<< HEAD
 					self.tiempo = TIEMPO_NIVEL1
+=======
+					self.tiempo = TIEMPO_NIVEL2
+>>>>>>> Development
 					if self.modo == "Single":
 						self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
 						self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
