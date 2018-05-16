@@ -74,8 +74,8 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
 	def cpu(self):
-		if self.bola.get_x() > 30:
-			if self.bola.get_y() > self.barra2.get_y():
+		if self.bola.get_x() > 15:
+			if self.bola.get_y() > self.barra2.get_y2():
 				self.barra2.mover(-1, self.matriz)
 			else:
 				self.barra2.mover(1, self.matriz)
@@ -103,7 +103,7 @@ class Juego:
 			self.dibujarMatriz()
 
 			self.dibujar()
-			#self.cpu()
+			self.cpu()
 
 			
 	def dibujar(self):
