@@ -7,7 +7,6 @@ window.minsize(800, 500) #define el tamaño de la ventana
 window.resizable (width = NO, height = NO) #el tamaño no se puede modificar
 window.config(bg="white")
 
-<<<<<<< HEAD
 #funcion para cargar imagenes
 def loadPicture(name):
         route = os.path.join('images', name)
@@ -24,7 +23,7 @@ racket2icon = loadPicture('2racket.gif')
 abouticon = loadPicture('abouticon.gif')
 cpuicon = loadPicture('cpuicon.gif')
 helpicon = loadPicture('helpicon.gif')
-=======
+
 def Single_nivel1():
 	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
 		juego = Juego("Single", 1)
@@ -69,7 +68,6 @@ boton5.place (x = 250, y = 200)
 boton6 = Button (window, text = "Double_Nivel3", font = ("arial", 12), width = 12, command = Double_nivel3)
 boton6.place (x = 400, y = 200)
 
->>>>>>> Development
 
 
 def Single_nivel1():
