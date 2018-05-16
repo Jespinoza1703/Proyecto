@@ -54,24 +54,24 @@ class Juego:
 				self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
 				self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
 			else:
-				self.barra1 = Barra_doble(1,12,33,3,TAMAÑO_BARRA_1)
-				self.barra2 = Barra_doble(38,12,33,3,TAMAÑO_BARRA_1)
+				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
+				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
 		elif self.nivel == 2:
 			self.tiempo = TIEMPO_NIVEL2
 			if self.modo == "Single":
 				self.barra1 = Barra(1,2,TAMAÑO_BARRA_2) 
 				self.barra2 = Barra(38,2,TAMAÑO_BARRA_2)
 			else:
-				self.barra1 = Barra_doble(1,12,33,3,TAMAÑO_BARRA_2)
-				self.barra2 = Barra_doble(38,12,33,3,TAMAÑO_BARRA_2)
+				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_2)
+				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_2)
 		elif self.nivel == 3:
 			self.tiempo = TIEMPO_NIVEL3
 			if self.modo == "Single":
 				self.barra1 = Barra(1,2,TAMAÑO_BARRA_3) 
 				self.barra2 = Barra(38,2,TAMAÑO_BARRA_3)
 			else:
-				self.barra1 = Barra_doble(1,12,33,3,TAMAÑO_BARRA_3)
-				self.barra2 = Barra_doble(38,12,33,3,TAMAÑO_BARRA_3)
+				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
+				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
 
 	def load_sound(name):
 		route = os.path.join('sounds', name)
@@ -112,6 +112,44 @@ class Juego:
 		# Pone la bola en la matriz
 		fuera_juego = False
 		while not fuera_juego:
+			if self.bola.get_score1() == 5 or self.bola.get_score2() == 5:
+				self.bola.set_score1(0)
+				self.bola.set_score2(0)
+				self.nivel += 1
+
+				self.matriz = []
+				self.crearMatriz()
+
+				if self.nivel == 1:
+					self.tiempo = TIEMPO_NIVEL2
+					if self.modo == "Single":
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
+					else:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
+				if self.nivel == 2:
+					self.tiempo = TIEMPO_NIVEL2
+					if self.modo == "Single":
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_2) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_2)
+					else:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_2)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_2)
+
+				if self.nivel == 3:
+					self.tiempo = TIEMPO_NIVEL3
+					if self.modo == "Single":
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_3) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_3)
+					else:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
+
+				if self.nivel == 3:
+					self.nivel = 0
+
+		
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT: #is le da X, cierra todo
 					pygame.quit()
@@ -128,6 +166,7 @@ class Juego:
 					elif event.key == pygame.K_ESCAPE:
 						pygame.quit()
 						quit()
+
 			self.dibujarMatriz()
 
 			self.dibujar()
