@@ -5,6 +5,7 @@ from bola import Bola
 from barra_doble import Barra_doble
 import time
 import random
+import os
 
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -31,7 +32,7 @@ class Juego:
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("PONG")
-		self.FILAS = 25
+		self.FILAS = 30
 		self.COLUMNAS = 40
 		self.matriz = []
 		self.crearMatriz()
@@ -41,6 +42,15 @@ class Juego:
 		self.tiempo = tiempo
 		self.score = 0
 
+	def load_sound(name):
+	    route = os.path.join('sounds', name)
+	    # Loading the sound
+	    try:
+	        sound = pygame.mixer.Sound(route)
+	    except (pygame.error) as message:
+	        print("Cant load sound" + route)
+	        sound = None
+	    return sound
 
 	def crearMatriz(self):
 		for i in range(self.FILAS):
@@ -60,7 +70,15 @@ class Juego:
 		time.sleep(self.tiempo)
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
 
+	def cpu(self):
+		if self.bola.get_x() > 30:
+			if self.bola.get_y() > self.barra2.get_y():
+				self.barra2.mover(-1, self.matriz)
+			else:
+				self.barra2.mover(1, self.matriz)
+
 	def jugar(self):
+		# Pone la bola en la matriz
 		fuera_juego = False
 		while not fuera_juego:
 			for event in pygame.event.get():
@@ -80,14 +98,17 @@ class Juego:
 			self.dibujarMatriz()
 
 			self.dibujar()
+			self.cpu()
 
 			
 	def dibujar(self):
 		font = pygame.font.Font(None, 30)
-		score_text = font.render("ScoreP1: " + str(self.score), True,
+		score1 = self.bola.get_score1()
+		score_text = font.render("ScoreP1: " + str(score1), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text, (0, 0))
-		score_text2 = font.render("ScoreP2: " + str(self.score), True,
+		score2 = self.bola.get_score2()
+		score_text2 = font.render("ScoreP2: " + str(score2), True,
 								 (255,0,0))
 		self.pantalla.blit(score_text2, (670, 0))
 		# Pone la bola en la matriz
@@ -101,3 +122,4 @@ class Juego:
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
 	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,3,9),0.06)
 	juego.jugar()
+

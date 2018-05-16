@@ -9,12 +9,17 @@
 # Metodos:
 # mover_barra()
 
+
 class Barra:
-	def __init__(self,x,y,largo):
-		self.ancho = 1
-		self.largo = largo
-		self.x = x
-		self.y = y
+
+    def __init__(self,x,y,largo):
+        self.ancho = 1
+        self.largo = largo
+        self.x = x
+        self.y = y
+
+    def get_y(self):
+        return self.y
 
 	def posicionar(self,matriz):
 		for n in range(self.largo):
