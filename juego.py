@@ -83,7 +83,8 @@ class Juego:
 		while not fuera_juego:
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT: #is le da X, cierra todo
-					fuera_juego = True
+					pygame.quit()
+					quit()
 				if event.type == pygame.KEYDOWN: #al presionar una tecla
 					if event.key == pygame.K_UP:
 						self.barra2.mover(1,self.matriz)
@@ -94,7 +95,8 @@ class Juego:
 					elif event.key == pygame.K_s:
 						self.barra1.mover(-1,self.matriz)
 					elif event.key == pygame.K_ESCAPE:
-						fuera_juego = True
+						pygame.quit()
+						quit()
 			self.dibujarMatriz()
 
 			self.dibujar()
@@ -118,7 +120,3 @@ class Juego:
 		pygame.draw.line(self.pantalla, WHITE, [0, 20], [ANCHO,20], 4)
 
 		pygame.display.update()
-
-if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-
-
