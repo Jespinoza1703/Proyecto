@@ -99,5 +99,5 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,12,9),0.06)
+	juego = Juego(Barra(1,2,9),Barra_doble(38,12,33,3,9),0.06)
 	juego.jugar()
