@@ -43,14 +43,14 @@ class Juego:
 		self.score = 0
 
 	def load_sound(name):
-	    route = os.path.join('sounds', name)
-	    # Loading the sound
-	    try:
-	        sound = pygame.mixer.Sound(route)
-	    except (pygame.error) as message:
-	        print("Cant load sound" + route)
-	        sound = None
-	    return sound
+		route = os.path.join('sounds', name)
+		# Loading the sound
+		try:
+			sound = pygame.mixer.Sound(route)
+		except (pygame.error) as message:
+			print("Cant load sound" + route)
+			sound = None
+		return sound
 
 	def crearMatriz(self):
 		for i in range(self.FILAS):
@@ -98,7 +98,7 @@ class Juego:
 			self.dibujarMatriz()
 
 			self.dibujar()
-			self.cpu()
+			#self.cpu()
 
 			
 	def dibujar(self):
