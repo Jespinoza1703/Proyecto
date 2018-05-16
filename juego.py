@@ -103,7 +103,7 @@ class Juego:
 
 	def cpu(self):
 		if self.bola.get_x() > 15:
-			if self.bola.get_y() > self.barra2.get_y2():
+			if self.bola.get_y() > self.barra2.get_y():
 				self.barra2.mover(-1, self.matriz)
 			else:
 				self.barra2.mover(1, self.matriz)
@@ -170,7 +170,7 @@ class Juego:
 			self.dibujarMatriz()
 
 			self.dibujar()
-			#self.cpu()
+			self.cpu()
 
 			
 	def dibujar(self):
