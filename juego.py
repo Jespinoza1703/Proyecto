@@ -42,6 +42,9 @@ class Juego:
 		self.tiempo = tiempo
 		self.score = 0
 
+	def get_tiempo(self):
+		return self.tiempo
+
 	def load_sound(name):
 		route = os.path.join('sounds', name)
 		# Loading the sound
