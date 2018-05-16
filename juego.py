@@ -120,6 +120,6 @@ class Juego:
 		pygame.display.update()
 
 if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-	juego = Juego(Barra_doble(1,3,9,13,9),Barra_doble(38,13,30,3,9),0.06)
+	juego = Juego(Barra_doble(1,3,9,13,9),Barra_doble(38,13,30,3,9),0.1)
 	juego.jugar()
 
