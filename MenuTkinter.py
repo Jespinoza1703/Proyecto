@@ -11,7 +11,7 @@ window = Tk ( ) #hace la ventana
 window.title ("Pong") #le pone el título a la ventana
 window.minsize(800, 500) #define el tamaño de la ventana
 window.resizable (width = NO, height = NO) #el tamaño no se puede modificar
-window.config(bg="white")
+window.config(bg="black")
 
 main_canvas = Canvas(window, width = 800, height = 500)
 main_canvas.place(x = 0, y = 0)
@@ -117,7 +117,6 @@ def help_window(): #ventana de instrucciones/ayuda
 	backbutton = Button(helpcanvas, image = backicon, command = back)
 	backbutton.place(x = 20, y = 20)
 
-#labels
 mainlogo_label = Label(window, image = mainlogo)
 mainlogo_label.place(x = 30, y = 45)
 oneplayer_label = Label(window, text = '1 Racket AI', font = 'Helvetica 24')
