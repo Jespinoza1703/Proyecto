@@ -1,11 +1,26 @@
+#Pong v1.0
+#II Tarea Programada
+#Taller de Programación
+#Estudiantes: Abigail Abarca. Jessica Espinoza. Alejandro Ibarra
+#I Semestre 2018.
+
 from juego import *
 from tkinter import *
+from threading import Thread
+
+#variables globales
+animate = False
+xspeed = 3
+yspeed = 4
 
 window = Tk ( ) #hace la ventana
 window.title ("Pong") #le pone el título a la ventana
 window.minsize(800, 500) #define el tamaño de la ventana
 window.resizable (width = NO, height = NO) #el tamaño no se puede modificar
 window.config(bg="white")
+
+main_canvas = Canvas(window, width = 800, height = 500)
+main_canvas.place(x = 0, y = 0)
 
 #funcion para cargar imagenes
 def loadPicture(name):
@@ -26,6 +41,7 @@ helpicon = loadPicture('helpicon.gif')
 backicon = loadPicture('backicon.gif')
 abigail = loadPicture('abigail.gif')
 alejandro = loadPicture('alejandro.gif')
+jessica = loadPicture('jessica.gif')
 
 def Single_nivel1():
 	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
@@ -33,6 +49,7 @@ def Single_nivel1():
 		juego.jugar()
 
 def Single_nivel2():
+	window.destroy()
 	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
 		juego2 = Juego("Single", 2)
 		juego2.jugar()
@@ -104,9 +121,11 @@ def about_window():
 	abigailinfo = Label(aboutcanvas, text = 'Abigail Abarca', font = 'Helvetica 30')
 	abigailinfo.place(x = 50, y = 350)
 	alejandropic = Label(aboutcanvas, image = alejandro)
-	alejandropic.place(x = 550, y = 100)
+	alejandropic.place(x = 550, y = 130)
 	alejandroinfo = Label(aboutcanvas, text = 'Alejandro Ibarra', font = 'Helvetica 30')
 	alejandroinfo.place(x = 550, y = 350)
+	jessicapic = Label(aboutcanvas, image = jessica)
+	jessicapic.place(x = 280, y = 130)
 	jessicainfo = Label(aboutcanvas, text = 'Jessica Espinoza', font = 'Helvetica 30')
 	jessicainfo.place(x = 275, y = 350)
 
@@ -117,7 +136,7 @@ def about_window():
 	backbutton = Button(aboutcanvas, image = backicon, command = back)
 	backbutton.place(x = 20, y = 20)
 
-def help_window():
+def help_window(): #ventana de instrucciones/ayuda
 	window.withdraw()
 	helpwindow = Toplevel()
 	helpwindow.title('About')
@@ -130,12 +149,13 @@ def help_window():
 	instructionstitle = Label(helpwindow, text = 'Instructions/Instrucciones', font = 'Helvetica 28')
 	instructionstitle.place(x = 240, y = 40)
 
+	#instrucciones, texto
 	instructions = Label(helpwindow, text = '1. Select the game mode\n2. If you get more than 5 points, you level up.\n3. There are 3 levels, every level speeds the ball up and reduces the\nlength of the paddle.', justify = LEFT, font = 'Helvetica 24')
 	instructions.place(x = 50, y = 125)
 	instructionsesp = Label(helpwindow, text = '1. Selecciona el modo de juego.\n2. Si ganas más de 5 puntos, subes de nivel.\n3. Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.', justify = LEFT, font = 'Helvetica 24')
 	instructionsesp.place(x = 50, y = 300)
 
-	def back():
+	def back(): #para ir atras en el menu
 		helpwindow.destroy()
 		window.deiconify()
 
@@ -172,6 +192,7 @@ about_button = Button(window, image = abouticon, command = about_window)
 about_button.place(x = 50, y = 400)
 help_button = Button(window, image = helpicon, command = help_window)
 help_button.place(x = 50, y = 300)
+
 
 boton2 = Button (window, text = "Single_Nivel2", font = ("arial", 12), width = 12, command = Single_nivel2)
 boton2.place (x = 250, y = 400)
