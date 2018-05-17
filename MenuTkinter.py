@@ -25,19 +25,23 @@ cpuicon = loadPicture('cpuicon.gif')
 helpicon = loadPicture('helpicon.gif')
 
 def Single_humano():
+	window.withdraw()
 	juego = Juego("Single", 1, "humano")
 	juego.jugar()
 
 def Single_cpu():
+	window.withdraw()
 	juego2 = Juego("Single", 1, "cpu")
 	juego2.jugar()
 
 
 def Double_humano():
+	window.withdraw()
 	juego = Juego("Double", 1, "humano")
 	juego.jugar()
 
 def Double_cpu():
+	window.withdraw()
 	juego2 = Juego("Double", 1, "cpu")
 	juego2.jugar()
 
