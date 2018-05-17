@@ -5,7 +5,7 @@ window = Tk ( ) #hace la ventana
 window.title ("Pong") #le pone el título a la ventana
 window.minsize(800, 500) #define el tamaño de la ventana
 window.resizable (width = NO, height = NO) #el tamaño no se puede modificar
-window.config(bg="white")
+window.config(bg="black")
 
 #funcion para cargar imagenes
 def loadPicture(name):
