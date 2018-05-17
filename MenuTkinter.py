@@ -25,25 +25,21 @@ cpuicon = loadPicture('cpuicon.gif')
 helpicon = loadPicture('helpicon.gif')
 
 def Single_humano():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego = Juego("Single", 1, "humano")
-		juego.jugar()
+	juego = Juego("Single", 1, "humano")
+	juego.jugar()
 
 def Single_cpu():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego2 = Juego("Single", 1, "cpu")
-		juego2.jugar()
+	juego2 = Juego("Single", 1, "cpu")
+	juego2.jugar()
 
 
 def Double_humano():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego = Juego("Double", 1, "humano")
-		juego.jugar()
+	juego = Juego("Double", 1, "humano")
+	juego.jugar()
 
 def Double_cpu():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego2 = Juego("Double", 1, "cpu")
-		juego2.jugar()
+	juego2 = Juego("Double", 1, "cpu")
+	juego2.jugar()
 
 
 #label de logo principal
