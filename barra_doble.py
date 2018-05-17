@@ -41,7 +41,7 @@ class Barra_doble:
 
 	# Permite mover la barra sin que mueva a través de la matriz
 	def mover(self,vy,matriz):
-		if vy == -1 and self.y1 + self.largo < 25 and self.y2 - self.largo < 25:
+		if vy == -1 and self.y1 + self.largo < 25 and self.y2 + self.largo < 25:
 			matriz[self.y1][self.x1] = 0
 			matriz[self.y2][self.x2] = 0
 			self.y1 -= vy
