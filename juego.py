@@ -39,7 +39,7 @@ class Juego:
 	def __init__(self, modo, nivel, versus):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
-		pygame.display.set_caption("PONG")
+		pygame.display.set_caption("Pong")
 		self.FILAS = 30
 		self.COLUMNAS = 40
 		self.matriz = []
@@ -139,7 +139,7 @@ class Juego:
 				self.crearMatriz()
 
 				if self.nivel == 1:
-					self.tiempo = TIEMPO_NIVEL2
+					self.tiempo = TIEMPO_NIVEL1
 					if self.modo == "Single":
 						self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
 						self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
