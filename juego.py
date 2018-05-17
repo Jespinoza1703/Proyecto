@@ -59,8 +59,6 @@ class Juego:
 					self.CPU = 0
 				elif self.versus == "cpu":
 					self.CPU = 1
-				print(self.CPU)
-
 			else:
 				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
 				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
@@ -117,7 +115,7 @@ class Juego:
 				else:
 					pygame.draw.rect(self.pantalla, WHITE, [L* columna,L * fila,L,L])
 		time.sleep(self.tiempo)
-		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 20], [ANCHO//2,LARGO], 4)
+		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 0], [ANCHO//2,LARGO], 4)
 
 	def cpu(self):
 		if self.bola.get_x() > 28:
@@ -194,19 +192,17 @@ class Juego:
 
 			
 	def dibujar(self):
-		font = pygame.font.Font(None, 30)
+		font = pygame.font.Font(None, 100)
 		score1 = self.bola.get_score1()
-		score_text = font.render("ScoreP1: " + str(score1), True,
-								 (255,0,0))
-		self.pantalla.blit(score_text, (0, 0))
+		score_text = font.render(str(score1), True,
+								 (WHITE))
+		self.pantalla.blit(score_text, (150, 0))
 		score2 = self.bola.get_score2()
-		score_text2 = font.render("ScoreP2: " + str(score2), True,
-								 (255,0,0))
-		self.pantalla.blit(score_text2, (670, 0))
+		score_text2 = font.render(str(score2), True,
+								 (WHITE))
+		self.pantalla.blit(score_text2, (620, 0))
 		# Pone la bola en la matriz
 		self.bola.mover(self.matriz)
 		self.barra1.posicionar(self.matriz)
 		self.barra2.posicionar(self.matriz)
-		pygame.draw.line(self.pantalla, WHITE, [0, 20], [ANCHO,20], 4)
-
 		pygame.display.update()
