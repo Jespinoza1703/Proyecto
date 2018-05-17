@@ -38,59 +38,25 @@ alejandro = loadPicture('alejandro.gif')
 jessica = loadPicture('jessica.gif')
 
 def Single_humano():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego = Juego("Single", 1, "humano")
-		juego.jugar()
+	window.withdraw()
+	juego = Juego("Single", 1, "humano")
+	juego.jugar()
 
 def Single_cpu():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego2 = Juego("Single", 1, "cpu")
-		juego2.jugar()
+	window.withdraw()
+	juego2 = Juego("Single", 1, "cpu")
+	juego2.jugar()
 
-def Single_nivel3():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego3 = Juego("Single", 3)
-		juego3.jugar()
-
-def Double_nivel1():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego = Juego("Double", 1)
-		juego.jugar()
-
-def Double_nivel2():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego2 = Juego("Double", 2)
-		juego2.jugar()
-
-def Double_nivel3():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego3 = Juego("Double", 3)
-		juego3.jugar()
-
-def Single_nivel1():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego = Juego("Single", 1)
-		juego.jugar()
-
-def Single_nivel2():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego2 = Juego("Single", 2)
-		juego2.jugar()
-
-def Single_nivel3():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego3 = Juego("Single", 3)
-		juego3.jugar()
 
 def Double_humano():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego = Juego("Double", 1, "humano")
-		juego.jugar()
+	window.withdraw()
+	juego = Juego("Double", 1, "humano")
+	juego.jugar()
 
 def Double_cpu():
-	if __name__ == "__main__":#cuando le diga ejecutar, que llame primero al condicional Pong, es lo primero que se va a ejecutar
-		juego2 = Juego("Double", 1, "cpu")
-		juego2.jugar()
+	window.withdraw()
+	juego2 = Juego("Double", 1, "cpu")
+	juego2.jugar()
 
 
 def about_window():
@@ -107,15 +73,15 @@ def about_window():
 	aboutlabel.place(x = 240, y = 30)
 	abigailpic = Label(aboutcanvas, image = abigail)
 	abigailpic.place(x = 50, y = 120)
-	abigailinfo = Label(aboutcanvas, text = 'Abigail Abarca', font = 'Helvetica 30')
+	abigailinfo = Label(aboutcanvas, text = 'Abigail Abarca', font = 'Helvetica 20')
 	abigailinfo.place(x = 50, y = 350)
 	alejandropic = Label(aboutcanvas, image = alejandro)
 	alejandropic.place(x = 550, y = 130)
-	alejandroinfo = Label(aboutcanvas, text = 'Alejandro Ibarra', font = 'Helvetica 30')
+	alejandroinfo = Label(aboutcanvas, text = 'Alejandro Ibarra', font = 'Helvetica 20')
 	alejandroinfo.place(x = 550, y = 350)
 	jessicapic = Label(aboutcanvas, image = jessica)
 	jessicapic.place(x = 280, y = 130)
-	jessicainfo = Label(aboutcanvas, text = 'Jessica Espinoza', font = 'Helvetica 30')
+	jessicainfo = Label(aboutcanvas, text = 'Jessica Espinoza', font = 'Helvetica 20')
 	jessicainfo.place(x = 275, y = 350)
 
 	def back():
@@ -170,13 +136,13 @@ help_label.place(x = 130, y = 310)
 
 #botones de inicio de juego
 oneplayer_button = Button(window, image = racket1cpuicon, command = Single_cpu)
-oneplayer_button.place(x = 300, y = 100)
+oneplayer_button.place(x = 330, y = 100)
 twoplayer_button = Button(window, image = racket12picon, command = Single_humano)
-twoplayer_button.place(x = 300, y = 275)
+twoplayer_button.place(x = 330, y = 275)
 oneplayer2r_button = Button(window, image = racket2cpuicon, command = Double_cpu)
-oneplayer2r_button.place(x = 550, y = 100)
+oneplayer2r_button.place(x = 580, y = 100)
 twoplayer2r_button = Button(window, image = racket22picon, command = Double_humano)
-twoplayer2r_button.place(x = 550, y= 275)
+twoplayer2r_button.place(x = 580, y= 275)
 about_button = Button(window, image = abouticon, command = about_window)
 about_button.place(x = 50, y = 400)
 help_button = Button(window, image = helpicon, command = help_window)
