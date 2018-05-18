@@ -6,10 +6,14 @@
 # y2
 # ancho
 # largo
-# vel_y
 ####################### 
 # Metodos:
-# mover_barra()
+# mover()
+# posicionar()
+# get_x1()
+# get_y()
+# get_x2()
+# get_y2
 
 class Barra_doble:
 	def __init__(self,x1,y1,x2,y2,largo):
