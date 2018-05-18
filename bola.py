@@ -2,10 +2,8 @@
 # Atributos:
 # x
 # y
-# ancho
-# largo
-# vy
-# vx
+# dirrection
+# right
 #######################
 # Metodos:
 # mover_bola()
@@ -16,7 +14,7 @@ import os
 
 
 class Bola:
-	def __init__(self,x,y, direction, right):
+	def __init__(self,x,y,direction,right):
 		self.x = x
 		self.y =y
 		self.vx = 1
@@ -206,65 +204,65 @@ class Bola:
 				self.x += self.vx
 				self.y += self.vy
 				matriz[self.y][self.x] = 1
-				#print(1)
-				#print('direction: '+str(self.direction))
-				#print('right: '+str(self.right))
-				#print('x: '+str(self.x))
-				#print('y: '+str(self.y))
-				#print('score1: '+str(self.score1))
-				#print('score2: '+str(self.score2))
+				print(1)
+				print('direction: '+str(self.direction))
+				print('right: '+str(self.right))
+				print('x: '+str(self.x))
+				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 			elif self.direction == 1:
 				self.x += self.vx
 				self.y -= self.vy 
-				#print(2)
-				#print('direction: '+str(self.direction))
-				#print('right: '+str(self.right))
-				#print('x: '+str(self.x))
-				#print('y: '+str(self.y))
-				#print('score1: '+str(self.score1))
-				#print('score2: '+str(self.score2))
+				print(2)
+				print('direction: '+str(self.direction))
+				print('right: '+str(self.right))
+				print('x: '+str(self.x))
+				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 				matriz[self.y][self.x] = 1
 			elif self.direction == 0:
 				self.x += self.vx
 				matriz[self.y][self.x] = 1
-				#print(3)
-				#print('direction: '+str(self.direction))
-				#print('right: '+str(self.right))
-				#print('x: '+str(self.x))
-				#print('y: '+str(self.y))
-				#print('score1: '+str(self.score1))
-				#print('score2: '+str(self.score2))
+				print(3)
+				print('direction: '+str(self.direction))
+				print('right: '+str(self.right))
+				print('x: '+str(self.x))
+				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 
 		elif self.right == False and self.x > 0: #si right es false, o sea hacia la izquierda
 			if self.direction == -1:
 				self.x -= self.vx
 				self.y += self.vy
 				matriz[self.y][self.x] = 1
-				#print(4)
-				#print('direction: '+str(self.direction))
-				#print('right: '+str(self.right))
-				#print('x: '+str(self.x))
-				#print('y: '+str(self.y))
-				#print('score1: '+str(self.score1))
-				#print('score2: '+str(self.score2))
+				print(4)
+				print('direction: '+str(self.direction))
+				print('right: '+str(self.right))
+				print('x: '+str(self.x))
+				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 			elif self.direction == 1:
 				self.x -= self.vx
 				self.y -= self.vy 
-				#print(5)
-				#print('direction: '+str(self.direction))
-				#print('right: '+str(self.right))
-				#print('x: '+str(self.x))
-				#print('y: '+str(self.y))
-				#print('score1: '+str(self.score1))
-				#print('score2: '+str(self.score2))
+				print(5)
+				print('direction: '+str(self.direction))
+				print('right: '+str(self.right))
+				print('x: '+str(self.x))
+				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
 				matriz[self.y][self.x] = 1
 			elif self.direction == 0:
 				self.x -= self.vx
 				matriz[self.y][self.x] = 1
-				#print(6)
-				#print('direction: '+str(self.direction))
-				#print('right: '+str(self.right))
-				#print('x: '+str(self.x))
-				#print('y: '+str(self.y))
-				#print('score1: '+str(self.score1))
-				#print('score2: '+str(self.score2))
+				print(6)
+				print('direction: '+str(self.direction))
+				print('right: '+str(self.right))
+				print('x: '+str(self.x))
+				print('y: '+str(self.y))
+				print('score1: '+str(self.score1))
+				print('score2: '+str(self.score2))
