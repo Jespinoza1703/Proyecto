@@ -13,17 +13,28 @@ L = 20
 
 # Clase Juego:
 # Atributos:
+# pantalla
+# filas: int
+# columnas: int
 # matriz: [[],[],...,[]]
+# score: int
 # bola: Class
+# nivel: int
 # barra1: Class
 # barra2: Class
+# modo: str
+# versus: str
+# CPU
 # score: int
 #######################
 # Metodos:
 # crearMatriz()
 # dibujarMatriz()
+# cpu()
 # jugar()
 # colisionar()
+
+# Constantes
 ANCHO = 800
 LARGO = 500
 
@@ -50,6 +61,7 @@ class Juego:
 		self.modo = modo
 		self.versus = versus
 		self.CPU = 0
+		# Se define el tiempo, tamaño de barra, modo y versus de cada nivel
 		if self.nivel == 1:
 			self.tiempo = TIEMPO_NIVEL1
 			if self.modo == "Single":
@@ -60,9 +72,11 @@ class Juego:
 				elif self.versus == "cpu":
 					self.CPU = 1
 			else:
+				# La primer barra es la de la izquiera, la otra la de la derecha
 				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
 				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
 				if self.versus == "humano":
+					# Si se escoje "humano" no se llama la función cpu()
 					self.CPU = 0
 				elif self.versus == "cpu":
 					self.CPU = 1
@@ -99,6 +113,7 @@ class Juego:
 				elif self.versus == "cpu":
 					self.CPU = 1
 
+	# Se crea auna matriz binaria(compuesta por ahora por 0s), de 25 filas x 40 columnas
 	def crearMatriz(self):
 		for i in range(self.FILAS):
 			fila = []
@@ -107,19 +122,29 @@ class Juego:
 				fila.append(0)
 			self.matriz.append(fila)
 
+	# Se va dibujando la matriz cuadro pr cuadro y se plasma en la pantalla
 	def dibujarMatriz(self):
 		for fila in range(self.FILAS):
 			for columna in range(self.COLUMNAS):
 				if self.matriz[fila][columna] == 0:
+					# Si el cierta posición de la matriz hay un 0, se pinta de color negro
 					pygame.draw.rect(self.pantalla, BLACK, [L* columna,L * fila,L,L])
 				else:
+					# Si el cierta posición de la matriz hay un 0, se pinta de color blanco
+					# Esto es para la bola y las barras
 					pygame.draw.rect(self.pantalla, WHITE, [L* columna,L * fila,L,L])
+		# Define cada cuánto tiempo se va a actualizar la matriz
 		time.sleep(self.tiempo)
+		# Sibuja una línea blanca en medio de la pantalla
 		pygame.draw.line(self.pantalla, WHITE, [ANCHO//2, 0], [ANCHO//2,LARGO], 4)
 
+	# Barra controlada por la computadora
 	def cpu(self):
+		# La posicion en x de la bola es mayor a 28
 		if self.bola.get_x() > 28:
 			if self.bola.get_y() > self.barra2.get_y():
+			# Si la posición en y de la bola es mayor que la de la barra
+			# se mueve la barra hacia arriba o abajo siguiendo la bola
 				self.barra2.mover(-1, self.matriz)
 			else:
 				self.barra2.mover(1, self.matriz)
@@ -129,14 +154,18 @@ class Juego:
 		# Genera múltiples eventos pygame.KEYDOWN
 		pygame.key.set_repeat(50, 50)
 		while not fuera_juego:
+			# Si el score de alguno de los jugadores es igual a 5
 			if self.bola.get_score1() == 5 or self.bola.get_score2() == 5:
+				# Se reinician los scores
 				self.bola.set_score1(0)
 				self.bola.set_score2(0)
+				# Se pasa de nivel
 				self.nivel += 1
-
+				# Se limpia la matriz para dibujar las barras del siguiente nivel
 				self.matriz = []
+				# Se vuelve a crear la matriz
 				self.crearMatriz()
-
+				# Se definen las condiciones de acuerdo con cada nivel
 				if self.nivel == 1:
 					self.tiempo = TIEMPO_NIVEL1
 					if self.modo == "Single":
@@ -163,10 +192,11 @@ class Juego:
 						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
 						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
 
+				# Si pierde en el nivel 3, vuelve al nivel 1
 				if self.nivel == 3:
 					self.nivel = 0
 
-		
+			# Eventos de las teclas
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT: #is le da X, cierra todo
 					pygame.quit()
@@ -184,26 +214,32 @@ class Juego:
 						pygame.quit()
 						quit()
 
+			# Aquí se actualiza constántemente la matriz para que
+			# ocurra el movimiento de forma continua
 			self.dibujarMatriz()
 
 			self.dibujar()
 
+			# se llama la función cpu solo si la variable CPU es igual a 1
 			if self.CPU == 1:
 				self.cpu()
 
 			
 	def dibujar(self):
+		# Se defne un texto para poner en la pantalla
 		font = pygame.font.Font(None, 100)
 		score1 = self.bola.get_score1()
 		score_text = font.render(str(score1), True,
 								 (WHITE))
+		# Se coloca el texto en la pantalla
 		self.pantalla.blit(score_text, (150, 0))
 		score2 = self.bola.get_score2()
 		score_text2 = font.render(str(score2), True,
 								 (WHITE))
 		self.pantalla.blit(score_text2, (620, 0))
-		# Pone la bola en la matriz
+		# Coloca la bola en la matriz
 		self.bola.mover(self.matriz)
+		# Posiciona las barras en la matriz
 		self.barra1.posicionar(self.matriz)
 		self.barra2.posicionar(self.matriz)
 		pygame.display.update()
