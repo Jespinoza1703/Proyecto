@@ -2,11 +2,21 @@
 # Atributos:
 # x
 # y
-# dirrection
+# direction
 # right
+# vx
+# vy
+# socre1
+# score2
 #######################
 # Metodos:
 # mover_bola()
+# get_score1()
+# get_score2()
+# set_score1()
+# set_score2()
+# get_x()
+# get_y()
 
 import random
 import pygame
