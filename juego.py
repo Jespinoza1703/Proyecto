@@ -125,8 +125,9 @@ class Juego:
 				self.barra2.mover(1, self.matriz)
 
 	def jugar(self):
-		# Pone la bola en la matriz
 		fuera_juego = False
+		# Genera múltiples eventos pygame.KEYDOWN
+		pygame.key.set_repeat(50, 50)
 		while not fuera_juego:
 			if self.bola.get_score1() == 5 or self.bola.get_score2() == 5:
 				self.bola.set_score1(0)
