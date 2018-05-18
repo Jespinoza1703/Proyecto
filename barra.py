@@ -4,10 +4,11 @@
 # y
 # ancho
 # largo
-# vel_y
 #######################
 # Metodos:
-# mover_barra()
+# mover()
+# posicionar()
+# get_y()
 import pygame
 import os
 
