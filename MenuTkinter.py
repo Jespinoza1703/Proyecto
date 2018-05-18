@@ -19,11 +19,14 @@ traduccion =[["1 Paleta IA", "1 Racket AI"], #0
 IDIOMA = 0
 ESP = 0
 ENG = 1
-
-ventana = Tk ( ) #hace la ventana
-ventana.title ("Pong") #le pone el título a la ventana
-ventana.minsize(800, 500) #define el tamaño de la ventana
-ventana.resizable (width = NO, height = NO) #el tamaño no se puede modificar
+# Hace la ventana
+ventana = Tk ( ) 
+# Le pone el título a la ventana
+ventana.title ("Pong") 
+# Define el tamaño de la ventana
+ventana.minsize(800, 500) 
+# El tamaño no se puede modificar
+ventana.resizable (width = NO, height = NO) 
 ventana.config(bg="white")
 
 def cambiarIdioma():
@@ -36,13 +39,13 @@ def cambiarIdioma():
     twoplayertworacket_label.config(text=traduccion[4][IDIOMA])
     help_label.config(text=traduccion[5][IDIOMA])
     about_label.config(text=traduccion[6][IDIOMA])
-#funcion para cargar imagenes
+# Funcion para cargar imagenes
 def loadPicture(name):
         route = os.path.join("images", name)
         photo = PhotoImage(file = route)
         return photo
 
-#carga de imagenes
+# Carga de imagenes
 racket1cpuicon = loadPicture("1racketcpu.gif")
 racket12picon = loadPicture("1racket2p.gif")
 racket2cpuicon = loadPicture("2racketcpu.gif")
@@ -110,8 +113,8 @@ def about_ventana():
 
 	backbutton = Button(aboutcanvas, image = backicon, command = back)
 	backbutton.place(x = 20, y = 20)
-
-def help_ventana(): #ventana de instrucciones/ayuda
+# Ventana de instrucciones/ayuda
+def help_ventana(): 
 	ventana.withdraw()
 	helpventana = Toplevel()
 	helpventana.title("About")
@@ -124,13 +127,13 @@ def help_ventana(): #ventana de instrucciones/ayuda
 	instructionstitle = Label(helpventana, text = "Instructions/Instrucciones", font = "Helvetica 28")
 	instructionstitle.place(x = 240, y = 40)
 
-	#instrucciones, texto
+	# Instrucciones, texto
 	instructions = Label(helpventana, text = "1. Select the game mode\n2. If you get more than 5 points, you level up.\n3. There are 3 levels, every level speeds the ball up and reduces the\nlength of the paddle.", justify = LEFT, font = "Helvetica 24")
 	instructions.place(x = 50, y = 125)
 	instructionsesp = Label(helpventana, text = "1. Selecciona el modo de juego.\n2. Si ganas más de 5 puntos, subes de nivel.\n3. Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.", justify = LEFT, font = "Helvetica 24")
 	instructionsesp.place(x = 50, y = 300)
-
-	def back(): #para ir atras en el menu
+	# Para ir atras en el menu
+	def back(): 
 		helpventana.destroy()
 		ventana.deiconify()
 
@@ -154,7 +157,7 @@ help_label.place(x = 110, y = 310)
 
 
 
-#botones de inicio de juego
+# Botones de inicio de juego
 oneplayer_button = Button(ventana, image = racket1cpuicon, command = Single_cpu)
 oneplayer_button.place(x = 330, y = 100)
 twoplayer_button = Button(ventana, image = racket12picon, command = Single_humano)
