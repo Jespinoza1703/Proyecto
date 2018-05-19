@@ -1,5 +1,6 @@
 import pygame
 import tkinter
+from tkinter import messagebox
 from barra import Barra
 from bola import Bola
 from barra_doble import Barra_doble
@@ -196,6 +197,7 @@ class Juego:
 
 				# Si pierde en el nivel 3, vuelve al nivel 1
 				if self.nivel == 3:
+					messagebox.showinfo('¡Felicidades! Has aprobado INTRO & TALLER. Listo para ALGORITMOS Y ESTRUCTURAS DE DATOS I. :D')
 					self.nivel = 0
 
 			# Eventos de las teclas

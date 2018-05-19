@@ -7,6 +7,8 @@
 
 from juego import *
 from tkinter import *
+import os
+import pygame
 
 # Matriz con lista de textos en ingles y español
 traduccion =[["1 Paleta IA", "1 Racket AI"], #0
@@ -18,10 +20,11 @@ traduccion =[["1 Paleta IA", "1 Racket AI"], #0
                ["Acerca de", "About"],#6
                 ]
  
-# Variables globales para seleccionar idioma de textos
+# Variables globales
 IDIOMA = 0
 ESP = 0
 ENG = 1
+music = True
 
 # Hace la ventana
 ventana = Tk ( ) 
@@ -32,6 +35,9 @@ ventana.minsize(800, 500)
 # El tamaño no se puede modificar
 ventana.resizable (width = NO, height = NO) 
 ventana.config(bg="white")
+
+# Iniciar Pygame
+pygame.init()
 
 # Funcion para cambiar idioma de textos
 def cambiarIdioma():
@@ -51,6 +57,12 @@ def loadPicture(name):
         photo = PhotoImage(file = route)
         return photo
 
+# Funcion para reproducir la musica
+def playMusic():
+	pygame.mixer.Sound(os.path.join("sounds", "music.ogg")).play(loops = -1)
+
+playMusic()
+
 # Carga de imagenes
 racket1cpuicon = loadPicture("1racketcpu.gif")
 racket12picon = loadPicture("1racket2p.gif")
@@ -65,6 +77,7 @@ backicon = loadPicture("backicon.gif")
 abigail = loadPicture("abigail.gif")
 alejandro = loadPicture("alejandro.gif")
 jessica = loadPicture("jessica.gif")
+python = loadPicture("python.gif")
 
 #Opcion de jugar con una paleta contra otro humano
 def Single_humano():
@@ -100,7 +113,7 @@ def about_ventana():
 
 	aboutcanvas = Canvas(aboutventana, width = 800, height = 500, bg = "white")
 	aboutcanvas.place(x = 0, y = 0)
-
+	
 	aboutlabel = Label(aboutcanvas, text = "About the programmers", font = "Helvetica 30")
 	aboutlabel.place(x = 240, y = 30)
 	abigailpic = Label(aboutcanvas, image = abigail)
@@ -115,6 +128,8 @@ def about_ventana():
 	jessicapic.place(x = 280, y = 130)
 	jessicainfo = Label(aboutcanvas, text = "Jessica Espinoza", font = "Helvetica 20")
 	jessicainfo.place(x = 275, y = 350)
+	pythonpic = Button(aboutcanvas, image = python)
+	pythonpic.place(x = 740, y = 10)
 
 	# Para ir atras al menu
 	def back():
@@ -167,8 +182,6 @@ about_label = Label(ventana, text=traduccion[6][IDIOMA], font = "Helvetica 20")
 about_label.place(x = 110, y = 410)
 help_label = Label(ventana, text=traduccion[5][IDIOMA], font = "Helvetica 20")
 help_label.place(x = 110, y = 310)
-
-
 
 # Botones de inicio de juego
 oneplayer_button = Button(ventana, image = racket1cpuicon, command = Single_cpu)
