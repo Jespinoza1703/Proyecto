@@ -32,7 +32,7 @@ L = 20
 # dibujarMatriz()
 # cpu()
 # jugar()
-# colisionar()
+# dibujar()
 
 # Constantes
 ANCHO = 800
@@ -46,6 +46,7 @@ TAMAÑO_BARRA_1 = 9
 TAMAÑO_BARRA_2 = 6
 TAMAÑO_BARRA_3 = 3
 
+# Clase Juego que controla las mecanicas de juego
 class Juego:
 	def __init__(self, modo, nivel, versus):
 		pygame.init()
@@ -61,6 +62,7 @@ class Juego:
 		self.modo = modo
 		self.versus = versus
 		self.CPU = 0
+
 		# Se define el tiempo, tamaño de barra, modo y versus de cada nivel
 		if self.nivel == 1:
 			self.tiempo = TIEMPO_NIVEL1

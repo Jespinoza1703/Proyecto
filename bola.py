@@ -10,7 +10,7 @@
 # score2
 #######################
 # Metodos:
-# mover_bola()
+# mover()
 # get_score1()
 # get_score2()
 # set_score1()
@@ -22,7 +22,7 @@ import random
 import pygame
 import os
 
-
+#Objeto Bola
 class Bola:
 	def __init__(self,x,y,direccion,derecha):
 		self.x = x

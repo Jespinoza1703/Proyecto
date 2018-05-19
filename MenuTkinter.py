@@ -1,12 +1,14 @@
-#Pong v1.0
-#II Tarea Programada
-#Taller de Programación
-#Estudiantes: Abigail Abarca. Jessica Espinoza. Alejandro Ibarra
-#I Semestre 2018.
+# Pong v1.0
+# II Tarea Programada
+# Taller de Programación
+# Estudiantes: Abigail Abarca. Jessica Espinoza. Alejandro Ibarra
+# Profesor: Jeff Schmidt Peralta
+# I Semestre 2018.
 
 from juego import *
 from tkinter import *
 
+# Matriz con lista de textos en ingles y español
 traduccion =[["1 Paleta IA", "1 Racket AI"], #0
                ["Cambiar el idioma", "Change language"],#1
                ["2 Paletas IA", "2 Rackets AI"],#2
@@ -16,9 +18,11 @@ traduccion =[["1 Paleta IA", "1 Racket AI"], #0
                ["Acerca de", "About"],#6
                 ]
  
+# Variables globales para seleccionar idioma de textos
 IDIOMA = 0
 ESP = 0
 ENG = 1
+
 # Hace la ventana
 ventana = Tk ( ) 
 # Le pone el título a la ventana
@@ -29,6 +33,7 @@ ventana.minsize(800, 500)
 ventana.resizable (width = NO, height = NO) 
 ventana.config(bg="white")
 
+# Funcion para cambiar idioma de textos
 def cambiarIdioma():
     global IDIOMA
     IDIOMA = 1 - IDIOMA
@@ -39,6 +44,7 @@ def cambiarIdioma():
     twoplayertworacket_label.config(text=traduccion[4][IDIOMA])
     help_label.config(text=traduccion[5][IDIOMA])
     about_label.config(text=traduccion[6][IDIOMA])
+
 # Funcion para cargar imagenes
 def loadPicture(name):
         route = os.path.join("images", name)
@@ -60,28 +66,31 @@ abigail = loadPicture("abigail.gif")
 alejandro = loadPicture("alejandro.gif")
 jessica = loadPicture("jessica.gif")
 
+#Opcion de jugar con una paleta contra otro humano
 def Single_humano():
 	ventana.withdraw()
 	juego = Juego("Single", 1, "humano")
 	juego.jugar()
 
+# Opcion de jugar con una paleta contra el CPU
 def Single_cpu():
 	ventana.withdraw()
 	juego2 = Juego("Single", 1, "cpu")
 	juego2.jugar()
 
-
+# Opcion de jugar con dos paletas contra otro humano
 def Double_humano():
 	ventana.withdraw()
 	juego = Juego("Double", 1, "humano")
 	juego.jugar()
 
+# Opcion de jugar con dos paletas contra el CPU
 def Double_cpu():
 	ventana.withdraw()
 	juego2 = Juego("Double", 1, "cpu")
 	juego2.jugar()
 
-
+# Ventana de informacion de programadores
 def about_ventana():
 	ventana.withdraw()
 	aboutventana = Toplevel()
@@ -107,12 +116,14 @@ def about_ventana():
 	jessicainfo = Label(aboutcanvas, text = "Jessica Espinoza", font = "Helvetica 20")
 	jessicainfo.place(x = 275, y = 350)
 
+	# Para ir atras al menu
 	def back():
 		aboutventana.destroy()
 		ventana.deiconify()
 
 	backbutton = Button(aboutcanvas, image = backicon, command = back)
 	backbutton.place(x = 20, y = 20)
+
 # Ventana de instrucciones/ayuda
 def help_ventana(): 
 	ventana.withdraw()
@@ -132,6 +143,7 @@ def help_ventana():
 	instructions.place(x = 50, y = 125)
 	instructionsesp = Label(helpventana, text = "1. Selecciona el modo de juego.\n2. Si ganas más de 5 puntos, subes de nivel.\n3. Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.", justify = LEFT, font = "Helvetica 24")
 	instructionsesp.place(x = 50, y = 300)
+
 	# Para ir atras en el menu
 	def back(): 
 		helpventana.destroy()
@@ -140,6 +152,7 @@ def help_ventana():
 	backbutton = Button(helpcanvas, image = backicon, command = back)
 	backbutton.place(x = 20, y = 20)
 
+# Textos e imagenes de menu
 mainlogo_label = Label(ventana, image = mainlogo)
 mainlogo_label.place(x = 30, y = 45)
 oneplayer_label = Label(ventana, text=traduccion[0][IDIOMA], font = "Helvetica 20")

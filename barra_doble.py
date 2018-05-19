@@ -1,20 +1,21 @@
 # Clase Barra:
 # Atributos:
+# ancho
+# largo
 # x1
 # y1
 # x2
 # y2
-# ancho
-# largo
 ####################### 
 # Metodos:
-# mover()
 # posicionar()
 # get_x1()
 # get_y()
 # get_x2()
 # get_y2
+# mover()
 
+#Objeto barra doble
 class Barra_doble:
 	def __init__(self,x1,y1,x2,y2,largo):
 		self.ancho = 1
