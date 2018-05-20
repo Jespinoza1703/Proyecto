@@ -43,13 +43,13 @@ pygame.init()
 def cambiarIdioma():
     global IDIOMA
     IDIOMA = 1 - IDIOMA
-    cambiarIdioma.config(text=traduccion[1][IDIOMA])
     oneplayer_label.config(text=traduccion[0][IDIOMA])
     oneplayertworacket_label.config(text=traduccion[2][IDIOMA])
     twoplayer_label.config(text=traduccion[3][IDIOMA])
     twoplayertworacket_label.config(text=traduccion[4][IDIOMA])
     help_label.config(text=traduccion[5][IDIOMA])
     about_label.config(text=traduccion[6][IDIOMA])
+    imagen_idioma.config(image=imagenes[0][IDIOMA])
 
 # Funcion para cargar imagenes
 def loadPicture(name):
@@ -78,7 +78,11 @@ abigail = loadPicture("abigail.gif")
 alejandro = loadPicture("alejandro.gif")
 jessica = loadPicture("jessica.gif")
 python = loadPicture("python.gif")
+español = loadPicture("español.gif")
+ingles = loadPicture("ingles.gif")
 
+
+imagenes = [[español,ingles]]
 #Opcion de jugar con una paleta contra otro humano
 def Single_humano():
 	ventana.withdraw()
@@ -154,9 +158,18 @@ def help_ventana():
 	instructionstitle.place(x = 240, y = 40)
 
 	# Instrucciones, texto
-	instructions = Label(helpventana, text = "P1 press W key to go up and S to go down. P2 UP key and DOWN\nkey. I don't really think I have to explain it further.\n1. Select the game mode\n2. If you get more than 5 points, you level up.\n3. There are 3 levels, every level speeds the ball up and reduces the\nlength of the paddle.", justify = LEFT, font = "Helvetica 24")
+	instructions = Label(helpventana, text = "P1 press W key to go up and S to go down.\
+P2 UP key and DOWN\nkey. I don't really think I have to explain it further.\n1. \
+Select the game mode\n2. If you get more than 5 points, you level up.\n3. \
+There are 3 levels, every level speeds the ball up and reduces the\nlength of the paddle.", \
+	 justify = LEFT, font = "Helvetica 18")
 	instructions.place(x = 40, y = 125)
-	instructionsesp = Label(helpventana, text = "J1 presiona la tecla W para subir y S para bajar. J2 tecla ARRIBA\ny ABAJO. No creo que tenga que explicar más. :)\n1. Selecciona el modo de juego.\n2. Si ganas más de 5 puntos, subes de nivel.\n3. Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.", justify = LEFT, font = "Helvetica 24")
+	instructionsesp = Label(helpventana, text = "J1 presiona la tecla W para subir y S para bajar. \
+J2 tecla ARRIBA\ny ABAJO. No creo que tenga que explicar más. :)\n1. Selecciona el modo de juego.\
+\n2. Si ganas más de 5 puntos, subes de nivel.\n3. \
+Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.", \
+justify = LEFT, font = "Helvetica 18")
+
 	instructionsesp.place(x = 40, y = 315)
 
 	# Para ir atras en el menu
@@ -196,7 +209,7 @@ about_button = Button(ventana, image = abouticon, command = about_ventana)
 about_button.place(x = 50, y = 400)
 help_button = Button(ventana, image = helpicon, command = help_ventana)
 help_button.place(x = 50, y = 300)
-cambiarIdioma = Button(ventana,text=traduccion[1][IDIOMA], font = "Helvetica 16", command = cambiarIdioma)
-cambiarIdioma.place(x = 600, y = 40)
+imagen_idioma = Button(ventana, image=imagenes[0][IDIOMA], font = "Helvetica 16", command = cambiarIdioma)
+imagen_idioma.place(x = 600, y = 40)
 
 mainloop()
