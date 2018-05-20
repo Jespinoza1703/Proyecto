@@ -1,5 +1,6 @@
 import pygame
 import tkinter
+from tkinter import messagebox
 from barra import Barra
 from bola import Bola
 from barra_doble import Barra_doble
@@ -32,7 +33,7 @@ L = 20
 # dibujarMatriz()
 # cpu()
 # jugar()
-# colisionar()
+# dibujar()
 
 # Constantes
 ANCHO = 800
@@ -46,6 +47,7 @@ TAMAÑO_BARRA_1 = 9
 TAMAÑO_BARRA_2 = 6
 TAMAÑO_BARRA_3 = 3
 
+# Clase Juego que controla las mecanicas de juego
 class Juego:
 	def __init__(self, modo, nivel, versus):
 		pygame.init()
@@ -61,6 +63,7 @@ class Juego:
 		self.modo = modo
 		self.versus = versus
 		self.CPU = 0
+
 		# Se define el tiempo, tamaño de barra, modo y versus de cada nivel
 		if self.nivel == 1:
 			self.tiempo = TIEMPO_NIVEL1
@@ -193,7 +196,9 @@ class Juego:
 						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
 
 				# Si pierde en el nivel 3, vuelve al nivel 1
-				if self.nivel == 3:
+				if self.nivel == 4:
+					if self.bola.get_score1() == 5:
+						messagebox.showinfo("¡Felicidades!", "Has aprobado INTRO & TALLER.\nListo para ALGORITMOS Y ESTRUCTURAS DE DATOS I. :D")
 					self.nivel = 0
 
 			# Eventos de las teclas
