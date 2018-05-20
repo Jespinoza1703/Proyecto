@@ -31,7 +31,7 @@ class Barra_doble:
 			matriz[self.y1+n][self.x1] = 1
 		for n in range(self.largo):
 			matriz[self.y2+n][self.x2] = 1
-
+	# Funciones get() para obtener valores 
 	def get_x1(self):
 		return self.x1
 
@@ -46,11 +46,15 @@ class Barra_doble:
 
 	# Permite mover la barra sin que mueva a través de la matriz
 	def mover(self,vy,matriz):
+		# Se dan restricciones para que la barra no se salga de la pantalla
 		if vy == -1 and self.y1 + self.largo < 25 and self.y2 + self.largo < 25:
+			# La posicion anterior (de donde se mueve) se pinta de negro
 			matriz[self.y1][self.x1] = 0
 			matriz[self.y2][self.x2] = 0
+			# Se mueve de una en una posicion
 			self.y1 -= vy
 			self.y2 -= vy
+			# La nueva pocision se pinta de negro
 			matriz[self.y1][self.x1] = 1
 			matriz[self.y2][self.x2] = 1
 		elif vy == 1 and self.y1 > 0 and self.y2 > 0:
