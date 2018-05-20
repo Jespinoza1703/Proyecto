@@ -12,12 +12,11 @@ import pygame
 
 # Matriz con lista de textos en ingles y español
 traduccion =[["1 Paleta IA", "1 Racket AI"], #0
-               ["Change language", "Cambiar idioma"],#1
-               ["2 Paletas IA", "2 Rackets AI"],#2
-               ["1 Paleta 2J", "1 Racket 2P"],#3
-               ["2 Paletas 2J", "2 Rackets 2P"],#4
-               ["¿Cómo jugar?", "How to play"],#5
-               ["Acerca de", "About"],#6
+               ["2 Paletas IA", "2 Rackets AI"],#1
+               ["1 Paleta 2J", "1 Racket 2P"],#2
+               ["2 Paletas 2J", "2 Rackets 2P"],#3
+               ["¿Cómo jugar?", "How to play"],#4
+               ["Acerca de", "About"],#5
                 ]
  
 # Variables globales
@@ -45,10 +44,10 @@ def cambiarIdioma():
     IDIOMA = 1 - IDIOMA
     oneplayer_label.config(text=traduccion[0][IDIOMA])
     oneplayertworacket_label.config(text=traduccion[2][IDIOMA])
-    twoplayer_label.config(text=traduccion[3][IDIOMA])
-    twoplayertworacket_label.config(text=traduccion[4][IDIOMA])
-    help_label.config(text=traduccion[5][IDIOMA])
-    about_label.config(text=traduccion[6][IDIOMA])
+    twoplayer_label.config(text=traduccion[2][IDIOMA])
+    twoplayertworacket_label.config(text=traduccion[3][IDIOMA])
+    help_label.config(text=traduccion[4][IDIOMA])
+    about_label.config(text=traduccion[5][IDIOMA])
     imagen_idioma.config(image=imagenes[0][IDIOMA])
 
 # Funcion para cargar imagenes
@@ -185,15 +184,15 @@ mainlogo_label = Label(ventana, image = mainlogo)
 mainlogo_label.place(x = 30, y = 45)
 oneplayer_label = Label(ventana, text=traduccion[0][IDIOMA], font = "Helvetica 20")
 oneplayer_label.place(x = 355, y = 195)
-oneplayertworacket_label = Label(ventana, text=traduccion[2][IDIOMA], font = "Helvetica 20")
+oneplayertworacket_label = Label(ventana, text=traduccion[1][IDIOMA], font = "Helvetica 20")
 oneplayertworacket_label.place(x = 625, y = 195)
-twoplayer_label = Label(ventana, text=traduccion[3][IDIOMA], font = "Helvetica 20")
+twoplayer_label = Label(ventana, text=traduccion[2][IDIOMA], font = "Helvetica 20")
 twoplayer_label.place(x = 350, y = 370)
-twoplayertworacket_label = Label(ventana, text=traduccion[4][IDIOMA], font = "Helvetica 20")
+twoplayertworacket_label = Label(ventana, text=traduccion[3][IDIOMA], font = "Helvetica 20")
 twoplayertworacket_label.place(x = 625, y = 370)
-about_label = Label(ventana, text=traduccion[6][IDIOMA], font = "Helvetica 20")
+about_label = Label(ventana, text=traduccion[5][IDIOMA], font = "Helvetica 20")
 about_label.place(x = 110, y = 415)
-help_label = Label(ventana, text=traduccion[5][IDIOMA], font = "Helvetica 20")
+help_label = Label(ventana, text=traduccion[4][IDIOMA], font = "Helvetica 20")
 help_label.place(x = 110, y = 315)
 
 # Botones de inicio de juego
