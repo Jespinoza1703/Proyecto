@@ -15,8 +15,6 @@ L = 20
 # Clase Juego:
 # Atributos:
 # pantalla
-# filas: int
-# columnas: int
 # matriz: [[],[],...,[]]
 # score: int
 # bola: Class
@@ -25,8 +23,6 @@ L = 20
 # barra2: Class
 # modo: str
 # versus: str
-# CPU
-# score: int
 #######################
 # Metodos:
 # crearMatriz()
