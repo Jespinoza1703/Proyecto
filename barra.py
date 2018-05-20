@@ -28,7 +28,7 @@ class Barra:
 		for n in range(self.largo):
 			matriz[self.y+n][self.x] = 1
 
-	#Mueve la barra por la matriz y evita que se salga de la misma.
+	# Mueve la barra por la matriz y evita que se salga de la misma.
 	def mover(self,vy,matriz):
 		if vy == -1 and self.y + self.largo < 25:
 			matriz[self.y][self.x] = 0
