@@ -110,7 +110,8 @@ class Bola:
 		# Si llega a la barra doble derecha y el siguiente es blanco, rebote
 		elif self.x == 29 and matriz[self.y][self.x + 1] == 1: 
 			pygame.mixer.Sound(os.path.join('sounds', 'bounce.wav')).play()
-			if matriz[self.y - 3][self.x + 1] == 0 and matriz[self.y + 3][self.x + 1] == 0: #revisa si paleta es de 3
+			# Revisa si paleta es de 3
+			if matriz[self.y - 3][self.x + 1] == 0 and matriz[self.y + 3][self.x + 1] == 0: 
 				if matriz[self.y - 1][self.x + 1] == 0:
 					self.direccion = 1
 					self.derecha = False
