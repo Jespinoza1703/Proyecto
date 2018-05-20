@@ -196,8 +196,9 @@ class Juego:
 						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
 
 				# Si pierde en el nivel 3, vuelve al nivel 1
-				if self.nivel == 3:
-					messagebox.showinfo('¡Felicidades! Has aprobado INTRO & TALLER. Listo para ALGORITMOS Y ESTRUCTURAS DE DATOS I. :D')
+				if self.nivel == 4:
+					if self.bola.get_score1() == 5:
+						messagebox.showinfo("¡Felicidades!", "Has aprobado INTRO & TALLER.\nListo para ALGORITMOS Y ESTRUCTURAS DE DATOS I. :D")
 					self.nivel = 0
 
 			# Eventos de las teclas

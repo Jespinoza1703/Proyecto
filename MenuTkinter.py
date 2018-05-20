@@ -12,7 +12,7 @@ import pygame
 
 # Matriz con lista de textos en ingles y español
 traduccion =[["1 Paleta IA", "1 Racket AI"], #0
-               ["Cambiar el idioma", "Change language"],#1
+               ["Change language", "Cambiar idioma"],#1
                ["2 Paletas IA", "2 Rackets AI"],#2
                ["1 Paleta 2J", "1 Racket 2P"],#3
                ["2 Paletas 2J", "2 Rackets 2P"],#4
@@ -154,10 +154,10 @@ def help_ventana():
 	instructionstitle.place(x = 240, y = 40)
 
 	# Instrucciones, texto
-	instructions = Label(helpventana, text = "1. Select the game mode\n2. If you get more than 5 points, you level up.\n3. There are 3 levels, every level speeds the ball up and reduces the\nlength of the paddle.", justify = LEFT, font = "Helvetica 24")
-	instructions.place(x = 50, y = 125)
-	instructionsesp = Label(helpventana, text = "1. Selecciona el modo de juego.\n2. Si ganas más de 5 puntos, subes de nivel.\n3. Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.", justify = LEFT, font = "Helvetica 24")
-	instructionsesp.place(x = 50, y = 300)
+	instructions = Label(helpventana, text = "P1 press W key to go up and S to go down. P2 UP key and DOWN\nkey. I don't really think I have to explain it further.\n1. Select the game mode\n2. If you get more than 5 points, you level up.\n3. There are 3 levels, every level speeds the ball up and reduces the\nlength of the paddle.", justify = LEFT, font = "Helvetica 24")
+	instructions.place(x = 40, y = 125)
+	instructionsesp = Label(helpventana, text = "J1 presiona la tecla W para subir y S para bajar. J2 tecla ARRIBA\ny ABAJO. No creo que tenga que explicar más. :)\n1. Selecciona el modo de juego.\n2. Si ganas más de 5 puntos, subes de nivel.\n3. Hay 3 niveles, cada nivel aumenta la velocidad de la bola y reduce\nla longitud de la paleta.", justify = LEFT, font = "Helvetica 24")
+	instructionsesp.place(x = 40, y = 315)
 
 	# Para ir atras en el menu
 	def back(): 
@@ -171,17 +171,17 @@ def help_ventana():
 mainlogo_label = Label(ventana, image = mainlogo)
 mainlogo_label.place(x = 30, y = 45)
 oneplayer_label = Label(ventana, text=traduccion[0][IDIOMA], font = "Helvetica 20")
-oneplayer_label.place(x = 315, y = 195)
+oneplayer_label.place(x = 355, y = 195)
 oneplayertworacket_label = Label(ventana, text=traduccion[2][IDIOMA], font = "Helvetica 20")
-oneplayertworacket_label.place(x = 585, y = 195)
+oneplayertworacket_label.place(x = 625, y = 195)
 twoplayer_label = Label(ventana, text=traduccion[3][IDIOMA], font = "Helvetica 20")
-twoplayer_label.place(x = 320, y = 370)
+twoplayer_label.place(x = 350, y = 370)
 twoplayertworacket_label = Label(ventana, text=traduccion[4][IDIOMA], font = "Helvetica 20")
-twoplayertworacket_label.place(x = 585, y = 370)
+twoplayertworacket_label.place(x = 625, y = 370)
 about_label = Label(ventana, text=traduccion[6][IDIOMA], font = "Helvetica 20")
-about_label.place(x = 110, y = 410)
+about_label.place(x = 110, y = 415)
 help_label = Label(ventana, text=traduccion[5][IDIOMA], font = "Helvetica 20")
-help_label.place(x = 110, y = 310)
+help_label.place(x = 110, y = 315)
 
 # Botones de inicio de juego
 oneplayer_button = Button(ventana, image = racket1cpuicon, command = Single_cpu)
