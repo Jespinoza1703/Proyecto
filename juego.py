@@ -45,7 +45,7 @@ TAMAÑO_BARRA_3 = 3
 
 # Clase Juego que controla las mecanicas de juego
 class Juego:
-	def __init__(self, modo, nivel, versus):
+	def __init__(self, modo, nivel, versus, tamaño=TAMAÑO_BARRA_1, time=TIEMPO_NIVEL1):
 		pygame.init()
 		self.pantalla = pygame.display.set_mode((ANCHO,LARGO))
 		pygame.display.set_caption("Pong")
@@ -59,58 +59,40 @@ class Juego:
 		self.modo = modo
 		self.versus = versus
 		self.CPU = 0
+		self.tamaño = tamaño
+		self.time = time
 
 		# Se define el tiempo, tamaño de barra, modo y versus de cada nivel
 		if self.nivel == 1:
-			self.tiempo = TIEMPO_NIVEL1
-			if self.modo == "Single":
-				self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
-				self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
-				if self.versus == "humano":
-					self.CPU = 0
-				elif self.versus == "cpu":
-					self.CPU = 1
-			else:
-				# La primer barra es la de la izquiera, la otra la de la derecha
-				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
-				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
-				if self.versus == "humano":
-					# Si se escoje "humano" no se llama la función cpu()
-					self.CPU = 0
-				elif self.versus == "cpu":
-					self.CPU = 1
-		elif self.nivel == 2:
-			self.tiempo = TIEMPO_NIVEL2
-			if self.modo == "Single":
-				self.barra1 = Barra(1,2,TAMAÑO_BARRA_2) 
-				self.barra2 = Barra(38,2,TAMAÑO_BARRA_2)
-				if self.versus == "humano":
-					self.CPU = 0
-				elif self.versus == "cpu":
-					self.CPU = 1
-			else:
-				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_2)
-				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_2)
-				if self.versus == "humano":
-					self.CPU = 0
-				elif self.versus == "cpu":
-					self.CPU = 1
-		elif self.nivel == 3:
-			self.tiempo = TIEMPO_NIVEL3
-			if self.modo == "Single":
-				self.barra1 = Barra(1,2,TAMAÑO_BARRA_3) 
-				self.barra2 = Barra(38,2,TAMAÑO_BARRA_3)
-				if self.versus == "humano":
-					self.CPU = 0
-				elif self.versus == "cpu":
-					self.CPU = 1
-			else:
-				self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_3)
-				self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_3)
-				if self.versus == "humano":
-					self.CPU = 0
-				elif self.versus == "cpu":
-					self.CPU = 1
+			if self.time == None:
+				self.tiempo = TIEMPO_NIVEL1
+			else: 
+				self.tiempo = time
+				if self.modo == "Single":
+					if self.tamaño == None:
+						self.barra1 = Barra(1,2,TAMAÑO_BARRA_1) 
+						self.barra2 = Barra(38,2,TAMAÑO_BARRA_1)
+					else:
+						self.barra1 = Barra(1,2,self.tamaño) 
+						self.barra2 = Barra(38,2,self.tamaño)
+					if self.versus == "humano":
+						self.CPU = 0
+					elif self.versus == "cpu":
+						self.CPU = 1
+				else:
+					# La primer barra es la de la izquiera, la otra la de la derecha
+					if self.tamaño == None:
+						self.barra1 = Barra_doble(1,3,9,13,TAMAÑO_BARRA_1)
+						self.barra2 = Barra_doble(38,12,30,3,TAMAÑO_BARRA_1)
+					else:
+						self.barra1 = Barra(1,2,self.tamaño) 
+						self.barra2 = Barra(38,2,self.tamaño)
+					if self.versus == "humano":
+						# Si se escoje "humano" no se llama la función cpu()
+						self.CPU = 0
+					elif self.versus == "cpu":
+						self.CPU = 1
+
 
 	# Se crea auna matriz binaria(compuesta por ahora por 0s), de 25 filas x 40 columnas
 	def crearMatriz(self):
